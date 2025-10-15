@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Crear Cuenta</title>
+    <link rel="stylesheet" href="crear_cuenta.css">
+</head>
+<body>
+    <div class="register-container">
+        <h2>Crear Cuenta</h2>
+        <form onsubmit="window.location.href='../../index.html'; return false;"></form>
+        <form onsubmit="window.history.back(); return false;">
+            <label for="nombre">Nombre</label>
+            <input type="text" id="nombre" name="nombre" required>
+
+            <label for="apellido">Apellido</label>
+            <input type="text" id="apellido" name="apellido" required>
+
+            <label for="email">Correo electrónico</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="usuario">Usuario</label>
+            <input type="text" id="usuario" name="usuario" required>
+
+            <label for="contrasena">Contraseña</label>
+            <input type="password" id="contrasena" name="contrasena" required>
+
+            <button type="submit">Crear Cuenta</button>
+        </form>
+        <div class="login-link">
+            ¿Ya tienes una cuenta? 
+            <a href="../iniciar sesion/iniciar_sesion.html">Iniciar Sesión</a>
+        </div>
+    </div>
+</body>
+</html>

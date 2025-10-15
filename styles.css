@@ -1,0 +1,275 @@
+body{
+    background-color: rgb(0, 46, 50);
+    background-image: url("imagenes/fondo.jpg");
+    background-size: cover;
+    background-position: cover;
+    font-family: montserrat;
+}
+header {
+    background-color: rgb(0, 0, 0);
+    background-image: url("imagenes/fondo_encabezado.jpg");
+    background-size: cover;
+    background-position: cover;
+    padding: 15px;
+    text-align: center;
+    border-radius: 5px; 
+    box-shadow: 0 5px 8px rgb(241, 241, 241);
+    margin-bottom: 20px;
+    display:inherit;
+    justify-content: space-between;
+    align-items: center;
+}
+a{
+    color: rgb(255, 255, 255);
+}
+h1{ 
+    
+    text-align: center;
+    color: aliceblue;
+    font-size: 50px;
+    height: auto;
+    width:auto;
+    margin: 20px;
+    text-decoration:solid;
+    text-shadow: 0 3px 4px rgb(0, 0, 0);
+    
+}
+h2{
+    font-size: 34px;
+    border: 2px solid rgb(0, 0, 0);
+    border-radius: 10px; 
+    background-color: rgba(0, 0, 0, 0.322);
+    text-align: center;
+    color: aliceblue;
+    height: auto;
+    margin: auto;
+    max-width: auto;
+    margin-top: 100px;
+    box-shadow: 0 5px 8px rgb(241, 241, 241);
+        text-decoration:solid;
+    text-shadow: 0 5px 8px rgb(0, 0, 0);
+}
+p{
+    font-size: 20px;
+    color: rgb(255, 255, 255);
+    text-align: center;
+    font-weight: bold;
+
+}
+li{
+    border: 2px solid rgb(0, 0, 0);
+    border-radius: 5px; 
+    background-color: rgba(0, 0, 0, 0.351);;
+    color: aliceblue;
+    font-weight: 700;
+    font-size: 20px;
+    padding: 5px;
+    margin: 5px;
+    text-align: center;
+    
+}
+nav {
+    background-color: rgba(0, 0, 0, 0.322);
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px; 
+    box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+    margin-bottom: 20px;
+}
+
+summary {
+    border-bottom: 0 5px 8px rgb(241, 241, 241);
+    border-radius: 5px; 
+    color: aliceblue;
+    font-weight: 700;
+    font-size: 20px;
+    padding: 50px;
+    margin: auto;
+    text-align: center;
+    list-style: none;
+    background-color: rgba(0, 0, 0, 0.076);
+    text-decoration: underline;
+    width: 100%;
+    height: 100%;
+    text-decoration:solid;
+}
+
+details {
+    border-radius: 5px; 
+    background-color: rgba(0, 0, 0, 0.351);
+
+}
+section {
+    margin: 5px;
+    padding: 5px;
+    border: 2px solid rgb(0, 0, 0);
+    border-radius: 5px; 
+    background-color: rgba(0, 0, 0, 0.351);
+}
+.duki{
+    background-image: url("imagenes/duki.png");
+    background-size: cover;
+    background-position: center;
+    width: 600px;
+    height: 400px;
+    border: 2px solid rgb(0, 0, 0);
+    border-radius: 5px; 
+    margin: auto;
+    text-align: center;
+    color: aliceblue;
+    transition: transform 0.3s cubic-bezier(.4,2,.6,1), box-shadow 0.3s;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+}
+.BAD.BUNNY{
+    background-image: url("imagenes/bad\ bunny.jpg");
+    background-size: cover;
+    background-position: center;
+    width: 600px;
+    height: 400px;
+    border: 2px solid rgb(225, 255, 0);
+    border-radius: 5px; 
+    margin: auto;
+    text-align: center;
+    color: aliceblue;
+    transition: transform 0.3s cubic-bezier(.4,2,.6,1), box-shadow 0.3s;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+
+}
+.lollapalooza {
+    background-image: url("imagenes/lolla.jpg");
+    background-size: cover;
+    background-position: center;
+    border: 2px solid rgb(0, 0, 0);
+    border-radius: 5px; 
+    margin: auto;
+    text-align: center;
+    color: aliceblue;
+    transition: transform 0.3s cubic-bezier(.4,2,.6,1), box-shadow 0.3s;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+}
+.alejandro_sanz {
+    background-image: url("imagenes/alejandro_sanz.jpg");
+    background-size: cover;
+    background-position: center;
+    width: auto;
+    height: auto;
+    border: 2px solid rgb(0, 242, 255);
+    border-radius: 5px; 
+    margin: auto;
+    text-align: center;
+    color: aliceblue;
+    transition: transform 0.3s cubic-bezier(.4,2,.6,1), box-shadow 0.3s;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+}
+.guns_n_roses {
+    background-image: url("imagenes/Guns-and-Roses-Argentina.jpg");
+    background-size: cover;
+    background-position: center;
+    width: auto;
+    height: auto;
+    border: 2px solid rgb(182, 176, 0);
+    border-radius: 5px; 
+    margin: auto;
+    text-align: center;
+    color: aliceblue;
+    transition: transform 0.3s cubic-bezier(.4,2,.6,1), box-shadow 0.3s;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+}
+
+
+.contendor {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+.contendor section {
+    flex: none;
+    max-width: 100%;
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 24px;
+}
+
+.duki,
+.BAD.BUNNY,
+.lollapalooza,
+.alejandro_sanz
+.guns_n_roses {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    margin: auto;
+    box-sizing: border-box;
+}
+
+.contendor article {
+    display: flex;
+    flex-direction: column;
+    height: 400px;
+    justify-content: flex-start;
+    position: relative;
+    overflow: hidden;
+}
+
+.contendor article details {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.contendor article details > *:not(summary) {
+
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.contendor article li {
+    margin-top: auto;
+}
+
+.duki:hover,
+.BAD.BUNNY:hover,
+.lollapalooza:hover,
+.alejandro_sanz:hover,
+.guns_n_roses:hover {
+    transform: scale(1.025);
+    box-shadow: 0 5px 8px rgb(241, 241, 241);
+
+    
+}
+details[open] > summary {
+    background-color: rgba(0, 0, 0, 0.322);
+    border-bottom: none;
+    border-radius: 5px 5px 0 0;
+    transition: background 0.3s, color 0.3s;
+}
+.user-actions {
+    justify-content: flex-end;
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.btn-user {
+    background: rgba(0, 0, 0, 0.173);
+    color: aliceblue;
+    padding: 8px 18px;
+    border-radius: 6px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.2s;
+    border: none;
+    font-size: 16px;
+}
+
+.btn-user:hover {
+    background: rgb(0, 89, 95);;
+    color: #fff;
+}

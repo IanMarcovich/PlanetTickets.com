@@ -1,0 +1,125 @@
+body{
+    background-color: hwb(29 29% 34% / 0.948);
+    font-family: Montserrat ;
+    src: url("fonts/Montserrat-Regular.ttf") format("truetype");
+}
+img{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 400px;
+    margin: auto;
+    background-image: url('../../imagenes/alejandrosanzpagina.jpg');
+    background-size: cover;
+    background-position: center;
+    border-radius: 15px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    padding: 30px;
+    min-height: 500px;
+    color: white;
+    position: relative;
+    z-index: 1;
+}
+
+form label,
+form input,
+form select,
+form button {
+    background: rgba(0,0,0,0.5);
+    border-radius: 5px;
+    color: white;
+    border: none;
+    font-size: 16px;
+    padding: 10px;
+    outline: none;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    text-align: center;
+
+}
+
+label, input, button {
+    width: 100%;
+    box-sizing: border-box;
+    font-family: 'Montserrat';
+}
+h2{
+    text-align: center;
+    color: white;
+    font-size: 40px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+input {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+}
+button {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #4CAF50;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+button:hover {
+    background-color: #45a049;
+}
+label {
+    color: white;
+    font-size: 18px;
+}
+a {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    text-align: center;
+    display: block;
+    margin-top: 10px;
+}
+a:hover {
+    text-decoration: underline;
+}
+.error {
+    color: red;
+    font-size: 14px;
+    margin-top: -10px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+select {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: white;
+}
+.user-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 16px;
+    padding: 32px 24px 0 24px;
+}
+.btn-user {
+    background: rgba(0, 0, 0, 0.129);
+    color: aliceblue;
+    padding: 8px 18px;
+    border-radius: 6px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.2s;
+    border: none;
+    font-size: 16px;
+}
+
+.btn-user:hover {
+    background: #00000084;
+    color: #fff;
+}
