@@ -30,16 +30,56 @@ form label,
 form input,
 form select,
 form button {
-    background: rgba(0,0,0,0.5);
-    border-radius: 5px;
-    color: white;
-    border: none;
+    border-radius: 8px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
     font-size: 16px;
-    padding: 10px;
+    padding: 12px 15px;
     outline: none;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-    text-align: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
 
+form label {
+    background: rgba(255, 255, 255, 0.7);
+    color: #333;
+    text-align: center;
+    font-weight: 600;
+    border: none;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+form input,
+form select {
+    background: rgba(255, 255, 255, 0.8);
+    color: #333;
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    text-align: left;
+    padding-left: 15px;
+}
+
+form input:focus,
+form select:focus {
+    background: rgba(255, 255, 255, 0.9);
+    border: 2px solid #FFD700;
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
+    transform: translateY(-2px);
+}
+
+form input::placeholder {
+    color: #666;
+    font-style: italic;
+}
+
+form button {
+    background: linear-gradient(45deg, #FFD700, #FFA500);
+    color: #333;
+    border: none;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    text-align: center;
 }
 
 label, input, button {
@@ -107,6 +147,12 @@ select {
     gap: 16px;
     padding: 32px 24px 0 24px;
 }
+
+#guest-menu {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
 .btn-user {
     background: rgba(0, 0, 0, 0.335);
     color: rgb(251, 251, 251);
@@ -124,7 +170,6 @@ select {
     color: #ffffff;
 }
 
-/* Precio Total */
 .precio-total {
     background: rgba(0,0,0,0.6);
     border: 2px solid rgba(255, 255, 255, 0.2);
@@ -166,4 +211,195 @@ select {
 .precio-actualizado #total {
     transform: scale(1.05);
     text-shadow: 0 4px 10px rgba(0, 0, 0, 0.9);
+}
+.header-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 24px;
+}
+
+.user-actions {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}
+
+#user-menu, #guest-menu {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.user-avatar-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.user-avatar {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #070031, #0f0066);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 16px;
+    color: white;
+    border: 3px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.user-avatar:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 55px;
+    right: 0;
+    background: linear-gradient(135deg, #070031, #0f0066);
+    border-radius: 12px;
+    padding: 15px;
+    min-width: 200px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+.dropdown-menu.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.dropdown-menu::before {
+    content: '';
+    position: absolute;
+    top: -8px;
+    right: 20px;
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 8px solid #070031;
+}
+
+.user-info {
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    margin-bottom: 10px;
+}
+
+.user-greeting {
+    font-weight: 600;
+    font-size: 14px;
+    text-transform: none;
+    letter-spacing: normal;
+    padding: 8px 16px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.btn-user {
+    cursor: pointer;
+}
+
+/* ===== USER DROPDOWN MENU STYLES ===== */
+.dropdown-menu {
+    position: absolute;
+    top: 50px;
+    right: 0;
+    background: linear-gradient(135deg, rgba(255, 242, 0, 0.95), rgba(255, 255, 153, 0.9));
+    backdrop-filter: blur(15px);
+    border-radius: 16px;
+    padding: 8px;
+    min-width: 220px;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1000;
+}
+
+.dropdown-menu.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.dropdown-header {
+    padding: 16px 12px 8px 12px;
+    text-align: center;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.dropdown-header .user-greeting {
+    color: #333;
+    font-weight: 600;
+    font-size: 14px;
+    display: block;
+}
+
+.dropdown-divider {
+    height: 1px;
+    background: rgba(0, 0, 0, 0.1);
+    margin: 8px 0;
+}
+
+.dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    border-radius: 12px;
+    color: #333;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    background: none;
+    border: none;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin: 2px 0;
+}
+
+.dropdown-item:hover {
+    background: rgba(0, 0, 0, 0.1);
+    transform: translateX(4px);
+}
+
+.dropdown-logout:hover {
+    background: rgba(255, 69, 0, 0.2);
+}
+
+.dropdown-icon {
+    width: 18px;
+    height: 18px;
+    stroke: currentColor;
+    flex-shrink: 0;
+}
+
+.btn-logout {
+    background: rgba(220, 53, 69, 0.8) !important;
+    color: white !important;
+}
+
+.btn-logout:hover {
+    background: rgba(220, 53, 69, 1) !important;
+    color: white !important;
 }

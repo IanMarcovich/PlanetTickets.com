@@ -4,21 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PlanetTickets.com</title>
+    
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Styles and Icons -->
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" href="imagenes/icono.png" type="image/x-icon">
 </head>
 <body>
 
+    <!-- Main Header -->
     <header>
-                <div class="user-actions">
-            <a href="iniciar sesion/iniciar_sesion.html" class="btn-user">Iniciar Sesión</a>
-            <a href="crear_cuenta/crear_cuenta.html" class="btn-user">Crear Cuenta</a>
-            <a href="mis_entradas/mis_entradas.html" class="btn-user">Ver mis Entradas</a>
+        <div class="user-actions" id="user-actions">
+            <!-- Logged User Menu -->
+            <div id="user-menu" style="display: none;">
+                <span id="user-name" class="user-greeting"></span>
+                <button onclick="logout()" class="btn-user btn-logout">Cerrar Sesión</button>
+            </div>
+            
+            <!-- Guest Menu -->
+            <div id="guest-menu">
+                <a href="auth/login.html" class="btn-user">Iniciar Sesión</a>
+                <a href="auth/registro.html" class="btn-user">Crear Cuenta</a>
+            </div>
+            
+            <a href="mis-entradas.html" class="btn-user">Ver mis Entradas</a>
         </div>
+        
         <h1>
             <a href="index.html" style="text-decoration: none; color: rgb(0, 46, 54); display: flex; align-items: center; justify-content: center; gap: 12px;">
                 <img src="imagenes/icono.png" alt="PlanetTickets Logo" class="header-logo">
@@ -28,7 +43,64 @@
         </h1>     
     </header>
 
-    <!-- Barra de búsqueda -->
+    <!-- Sticky Header -->
+    <header class="sticky-header" id="stickyHeader">
+        <div class="sticky-header-content">
+            <!-- Logo Section -->
+            <div class="sticky-logo">
+                <img src="imagenes/icono.png" alt="PlanetTickets Logo" class="sticky-logo-img">
+                <span class="sticky-title">PlanetTickets</span>
+            </div>
+            
+            <!-- Search Section -->
+            <div class="sticky-search">
+                <input type="text" class="sticky-search-input" placeholder="Buscar..." id="stickySearchInput">
+                <button class="sticky-search-button" type="button" id="stickySearchButton">
+                    <svg class="sticky-search-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M21 21L16.514 16.506M19 10.5C19 15.194 15.194 19 10.5 19C5.806 19 2 15.194 2 10.5C2 5.806 5.806 2 10.5 2C15.194 2 19 5.806 19 10.5Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+            </div>
+            
+            <!-- User Actions Section -->
+            <div class="sticky-user-actions">
+                <!-- Logged User Dropdown -->
+                <div id="sticky-user-menu" style="display: none;" class="sticky-user-dropdown">
+                    <button class="user-avatar-btn" id="userAvatarBtn">
+                        <div class="user-initials" id="userInitials">U</div>
+                        <svg class="dropdown-arrow" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                    <div class="dropdown-menu" id="userDropdown">
+                        <div class="dropdown-header">
+                            <span id="dropdownUserName">Usuario</span>
+                        </div>
+                        <div class="dropdown-divider"></div>
+                        <a href="mis-entradas.html" class="dropdown-item">
+                            <svg class="dropdown-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M9 12L11 14L15 10M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            Ver mis Entradas
+                        </a>
+                        <button onclick="logout()" class="dropdown-item dropdown-logout">
+                            <svg class="dropdown-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M9 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V5C3 4.46957 3.21071 3.96086 3.58579 3.58579C3.96086 3.21071 4.46957 3 5 3H9M16 17L21 12M21 12L16 7M21 12H9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            Cerrar Sesión
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Guest Actions -->
+                <div id="sticky-guest-menu">
+                    <a href="auth/login.html" class="sticky-btn">Iniciar Sesión</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Search Container -->
     <div class="search-container">
         <div class="search-wrapper">
             <input type="text" class="search-input" placeholder="Buscar artistas, eventos o lugares..." id="searchInput">
@@ -37,158 +109,739 @@
                     <path d="M21 21L16.514 16.506M19 10.5C19 15.194 15.194 19 10.5 19C5.806 19 2 15.194 2 10.5C2 5.806 5.806 2 10.5 2C15.194 2 19 5.806 19 10.5Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
             </button>
-            <div class="search-suggestions" id="searchSuggestions">
-            </div>
+            <div class="search-suggestions" id="searchSuggestions"></div>
         </div>
     </div>
 
-    <h2>PRóXIMOS SHOWS</h2>
-    <main>
-    <div class="contendor">
-        <section id="shows">
-        <article class="duki">
-            <details>
-                <summary></summary>
-                <div class="informacion_show">
-                <h4>DUKI | AMERI TOUR</h4>
-                <p>Fecha: 10 de octubre de 2025</p>
-                <p>Lugar: Movistar Arena</p>
-                <p>Ameri es el cuarto álbum de estudio del rapero y compositor argentino Duki, lanzado mundialmente el 31 de octubre de 2024 a través de Dale Play Records y SSJ Records. El álbum rompió varios récords de ventas y streaming, a nivel regional y mundial</p>
-                <li><a href="./artistas/duki/duki.html" target="noopener">COMPRAR</a></li>
+    <!-- Featured Shows Carousel -->
+    <section class="shows-destacados">
+        <h2>SHOWS DESTACADOS</h2>
+        <div class="carousel-container">
+            <div class="carousel-track" id="carouselTrack">
+                
+                <!-- Slide 1: Taylor Swift -->
+                <div class="carousel-slide active">
+                    <div class="slide-content">
+                        <div class="slide-image taylor-swift-bg"></div>
+                        <div class="slide-info">
+                            <h3>TAYLOR SWIFT</h3>
+                            <h4>THE ERAS TOUR</h4>
+                            <p>9-11 Febrero 2027 • River Plate</p>
+                            <a href="./artistas/taylor_swift/taylor_swift.html" class="btn-destacado">COMPRAR AHORA</a>
+                        </div>
+                    </div>
                 </div>
-            </article>
-            </details> 
-        </section>
-        <section id="shows">
-        <article class="BAD_BUNNY">
-            <details>
-                <summary></summary>
-                <div class="informacion_show">
-                <h4>BAD BUNNY | DeBÍ TiRAR MáS FOToS</h4>
-                <p>Fechas: 13 de Febrero - 14 de Febrero - 15 de Febrero de 2026</p>
-                <p>Lugar: River Plate</p>
-                <p>Debi tirar mas fotos es el séxto álbum de estudio grabado por el cantante puertorriqueño Bad Bunny. Se lanzó el 5 de enero de 2025 a través de la compañía discográfica Rimas Entertainment precediendo el lanzamiento de su anterior álbum Nadie sabe lo que va a pasar mañana (2023). Contiene colaboraciones con Chuwi, Dei V, Pleneros de la Cresta, Omar Courtz y RaiNao. Además, es el álbum con el que el cantante explora la animación de stop motion.</p>
-                <li><a href="./artistas/bad bunny/badbunny.html" target="_blank">COMPRAR</a></li>
+                
+                <!-- Slide 2: Bad Bunny -->
+                <div class="carousel-slide">
+                    <div class="slide-content">
+                        <div class="slide-image bad-bunny-bg"></div>
+                        <div class="slide-info">
+                            <h3>BAD BUNNY</h3>
+                            <h4>DeBÍ TiRAR MáS FOToS</h4>
+                            <p>13-15 Febrero 2026 • River Plate</p>
+                            <a href="./artistas/bad bunny/badbunny.html" class="btn-destacado">COMPRAR AHORA</a>
+                        </div>
+                    </div>
                 </div>
-            </article>
-            </details> 
-        </section>
-        <section id="shows">
-        <article class="lollapalooza">
-            <details>
-                <summary></summary>
-                <div class="informacion_show">
-                <h4>lollapalooza 2026</h4>
-                <p>Fecha: 13 de Marzo - 14 de Marzo - 15 de Marzo de 2026</p>
-                <p>Lugar: Hipodromo de San Isidro</p>
-                <p>Lollapalooza 2026 es la próxima edición del festival de música internacional que se realizará en Argentina los días 13, 14 y 15 de marzo en el Hipódromo de San Isidro. El evento de tres días presenta un extenso lineup de artistas de renombre mundial y figuras locales de diversos géneros, incluyendo pop, hip-hop, rock y electrónica. Además de la música, el festival ofrece arte, gastronomía, y propuestas para la familia.</p>
-                <li><a href="./artistas/lollapalooza/lollapalooza.html" target="_blank">COMPRAR</a></li>
+                
+                <!-- Slide 3: Coldplay -->
+                <div class="carousel-slide">
+                    <div class="slide-content">
+                        <div class="slide-image coldplay-bg"></div>
+                        <div class="slide-info">
+                            <h3>COLDPLAY</h3>
+                            <h4>MUSIC OF THE SPHERES</h4>
+                            <p>25-28 Noviembre 2026 • River Plate</p>
+                            <a href="./artistas/coldplay/coldplay.html" class="btn-destacado">COMPRAR AHORA</a>
+                        </div>
+                    </div>
                 </div>
-            </article>
-            </details> 
-        </section>
-        <section id="shows">
-        <article class="alejandro_sanz">
-            <details>
-                <summary></summary>
-                <div class="informacion_show">
-                <h4>ALEJANDRO SANZ | ¿Y ahora qué?</h4>
-                <p>Fechas: 6 de marzo de 2026</p>
-                <p>Lugar: Campo de Polo de Buenos Aires</p>
-                <p>El tour "¿Y Ahora Qué?" de Alejandro Sanz continuará en 2026 con presentaciones en Ecuador, Colombia, Perú, Chile y Argentina, comenzando en febrero y extendiéndose hasta marzo de ese año, y ya tiene fechas confirmadas en Latinoamérica y España. Después de agotar localidades en México, la gira incluirá los grandes éxitos de Sanz y lo más reciente de su repertorio. . </p>
-                <li><a href="artistas/alejandro_sanz/alejandro_sanz.html" target="_blank">COMPRAR</a></li>
+                
+                <!-- Slide 4: Duki -->
+                <div class="carousel-slide">
+                    <div class="slide-content">
+                        <div class="slide-image duki-bg"></div>
+                        <div class="slide-info">
+                            <h3>DUKI</h3>
+                            <h4>AMERI TOUR</h4>
+                            <p>10 Octubre 2025 • Movistar Arena</p>
+                            <a href="./artistas/duki/duki.html" class="btn-destacado">COMPRAR AHORA</a>
+                        </div>
+                    </div>
                 </div>
-            </article>
-            </details> 
-        </section>
+                
+                <!-- Slide 5: Billie Eilish -->
+                <div class="carousel-slide">
+                    <div class="slide-content">
+                        <div class="slide-image billie-eilish-bg"></div>
+                        <div class="slide-info">
+                            <h3>BILLIE EILISH</h3>
+                            <h4>HIT ME HARD AND SOFT</h4>
+                            <p>22 Mayo 2027 • Personal Fest</p>
+                            <a href="./artistas/billie_eilish/billie_eilish.html" class="btn-destacado">COMPRAR AHORA</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Slide 6: The Weeknd -->
+                <div class="carousel-slide">
+                    <div class="slide-content">
+                        <div class="slide-image the-weeknd-bg"></div>
+                        <div class="slide-info">
+                            <h3>THE WEEKND</h3>
+                            <h4>AFTER HOURS TIL DAWN</h4>
+                            <p>15 Abril 2027 • Movistar Arena</p>
+                            <a href="./artistas/the_weeknd/the_weeknd.html" class="btn-destacado">COMPRAR AHORA</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Slide 7: Ariana Grande -->
+                <div class="carousel-slide">
+                    <div class="slide-content">
+                        <div class="slide-image ariana-grande-bg"></div>
+                        <div class="slide-info">
+                            <h3>ARIANA GRANDE</h3>
+                            <h4>ETERNAL SUNSHINE TOUR</h4>
+                            <p>22-23 Octubre 2027 • Movistar Arena</p>
+                            <a href="./artistas/ariana_grande/ariana_grande.html" class="btn-destacado">COMPRAR AHORA</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Carousel Indicators -->
+            <div class="carousel-indicators">
+                <button class="indicator active" data-slide="0"></button>
+                <button class="indicator" data-slide="1"></button>
+                <button class="indicator" data-slide="2"></button>
+                <button class="indicator" data-slide="3"></button>
+                <button class="indicator" data-slide="4"></button>
+                <button class="indicator" data-slide="5"></button>
+                <button class="indicator" data-slide="6"></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Upcoming Shows Section -->
+    <section class="upcoming-shows-section">
+        <h2>PRÓXIMOS SHOWS</h2>
+        <main>
+            <div class="contendor">
+                <!-- Duki Show -->
                 <section id="shows">
-        <article class="guns_n_roses">
-            <details>
-                <summary></summary>
-                <h4>GUNS N' ROSES</h4>
-                <p>Fechas: 17 de OCTUBRE - 18 de OCTUBRE de 2026</p>
-                <p>Lugar: Estadio TOMÁS A DUCÓ (C.A HURACAN)</p>
-                <p>Guns N' Roses está en Argentina para su gira 2025 que es parte de la etapa sudamericana de su tour mundial "Because What You Want & What You Get Are Two Completely Different Things". La banda anunció una nueva ronda de conciertos en Latinoamérica tras el éxito de su gira por Europa y Asia. Las fechas confirmadas son el 17 y 18 de octubre de 2025 en el Estadio Tomás A. Ducó (Estadio de Huracán).</p>
-                <li><a href="artistas/guns_n_roses/guns_n_roses.html" target="_blank">COMPRAR</a></li>
-            </article>
-            </details> 
-        </section>
-        <section id="shows">
-        <article class="coldplay">
-            <details>
-                <summary></summary>
-                <div class="informacion_show">
-                <h4>COLDPLAY | MUSIC OF THE SPHERES WORLD TOUR</h4>
-                <p>Fechas: 25 de Noviembre - 26 de Noviembre - 28 de Noviembre de 2026</p>
-                <p>Lugar: Estadio River Plate</p>
-                <p>Coldplay regresa a Buenos Aires con su espectacular gira "Music of the Spheres World Tour". La banda británica promete un show único con efectos visuales impresionantes, tecnología sustentable y todos sus grandes éxitos. Una experiencia inolvidable que combina música, arte y conciencia ambiental en el icónico estadio de River Plate.</p>
-                <li><a href="./artistas/coldplay/coldplay.html" target="_blank">COMPRAR</a></li>
+                    <article class="duki">
+                        <details>
+                            <summary></summary>
+                            <div class="informacion_show">
+                                <h4>DUKI | AMERI TOUR</h4>
+                                <p>Fecha: 10 de octubre de 2025</p>
+                                <p>Lugar: Movistar Arena</p>
+                                <p>Ameri es el cuarto álbum de estudio del rapero y compositor argentino Duki, lanzado mundialmente el 31 de octubre de 2024 a través de Dale Play Records y SSJ Records. El álbum rompió varios récords de ventas y streaming, a nivel regional y mundial</p>
+                                <li><a href="./artistas/duki/duki.html" target="noopener">COMPRAR</a></li>
+                            </div>
+                        </details> 
+                    </article>
+                </section>
+                
+                <!-- Bad Bunny Show -->
+                <section id="shows">
+                    <article class="BAD_BUNNY">
+                        <details>
+                            <summary></summary>
+                            <div class="informacion_show">
+                                <h4>BAD BUNNY | DeBÍ TiRAR MáS FOToS</h4>
+                                <p>Fechas: 13 de Febrero - 14 de Febrero - 15 de Febrero de 2026</p>
+                                <p>Lugar: River Plate</p>
+                                <p>Debi tirar mas fotos es el séxto álbum de estudio grabado por el cantante puertorriqueño Bad Bunny. Se lanzó el 5 de enero de 2025 a través de la compañía discográfica Rimas Entertainment precediendo el lanzamiento de su anterior álbum Nadie sabe lo que va a pasar mañana (2023). Contiene colaboraciones con Chuwi, Dei V, Pleneros de la Cresta, Omar Courtz y RaiNao. Además, es el álbum con el que el cantante explora la animación de stop motion.</p>
+                                <li><a href="./artistas/bad bunny/badbunny.html" target="_blank">COMPRAR</a></li>
+                            </div>
+                        </details> 
+                    </article>
+                </section>
+                
+                <!-- Lollapalooza Show -->
+                <section id="shows">
+                    <article class="lollapalooza">
+                        <details>
+                            <summary></summary>
+                            <div class="informacion_show">
+                                <h4>lollapalooza 2026</h4>
+                                <p>Fecha: 13 de Marzo - 14 de Marzo - 15 de Marzo de 2026</p>
+                                <p>Lugar: Hipodromo de San Isidro</p>
+                                <p>Lollapalooza 2026 es la próxima edición del festival de música internacional que se realizará en Argentina los días 13, 14 y 15 de marzo en el Hipódromo de San Isidro. El evento de tres días presenta un extenso lineup de artistas de renombre mundial y figuras locales de diversos géneros, incluyendo pop, hip-hop, rock y electrónica. Además de la música, el festival ofrece arte, gastronomía, y propuestas para la familia.</p>
+                                <li><a href="./artistas/lollapalooza/lollapalooza.html" target="_blank">COMPRAR</a></li>
+                            </div>
+                        </details> 
+                    </article>
+                </section>
+                
+                <!-- Alejandro Sanz Show -->
+                <section id="shows">
+                    <article class="alejandro_sanz">
+                        <details>
+                            <summary></summary>
+                            <div class="informacion_show">
+                                <h4>ALEJANDRO SANZ | ¿Y ahora qué?</h4>
+                                <p>Fechas: 6 de marzo de 2026</p>
+                                <p>Lugar: Campo de Polo de Buenos Aires</p>
+                                <p>El tour "¿Y Ahora Qué?" de Alejandro Sanz continuará en 2026 con presentaciones en Ecuador, Colombia, Perú, Chile y Argentina, comenzando en febrero y extendiéndose hasta marzo de ese año, y ya tiene fechas confirmadas en Latinoamérica y España. Después de agotar localidades en México, la gira incluirá los grandes éxitos de Sanz y lo más reciente de su repertorio. . </p>
+                                <li><a href="artistas/alejandro_sanz/alejandro_sanz.html" target="_blank">COMPRAR</a></li>
+                            </div>
+                        </details> 
+                    </article>
+                </section>
+                
+                <!-- Guns N' Roses Show -->
+                <section id="shows">
+                    <article class="guns_n_roses">
+                        <details>
+                            <summary></summary>
+                            <div class="informacion_show">
+                                <h4>GUNS N' ROSES</h4>
+                                <p>Fechas: 17 de OCTUBRE - 18 de OCTUBRE de 2026</p>
+                                <p>Lugar: Estadio TOMÁS A DUCÓ (C.A HURACAN)</p>
+                                <p>Guns N' Roses está en Argentina para su gira 2025 que es parte de la etapa sudamericana de su tour mundial "Because What You Want & What You Get Are Two Completely Different Things". La banda anunció una nueva ronda de conciertos en Latinoamérica tras el éxito de su gira por Europa y Asia. Las fechas confirmadas son el 17 y 18 de octubre de 2025 en el Estadio Tomás A. Ducó (Estadio de Huracán).</p>
+                                <li><a href="artistas/guns_n_roses/guns_n_roses.html" target="_blank">COMPRAR</a></li>
+                            </div>
+                        </details> 
+                    </article>
+                </section>
+                
+                <!-- Ver más Button -->
+                <div class="ver-mas-container">
+                    <button class="btn-ver-mas" onclick="mostrarMasArtistas()">Ver más artistas</button>
                 </div>
-            </article>
-            </details> 
-        </section>
-        <section id="shows">
-        <article class="taylor_swift">
-            <details>
-                <summary></summary>
-                <div class="informacion_show">      
-                <h4>TAYLOR SWIFT | THE ERAS TOUR</h4>
-                <p>Fechas: 9 de Febrero - 10 de Febrero - 11 de Febrero de 2027</p>
-                <p>Lugar: Estadio River Plate</p>
-                <p>Taylor Swift llega por primera vez a Argentina con The Eras Tour, el espectáculo más esperado del año. Un recorrido por toda su discografía que incluye sus mayores éxitos desde sus inicios country hasta sus últimos álbumes pop. Tres noches únicas en el Monumental con más de 3 horas de música y sorpresas especiales.</p>
-                <li><a href="./artistas/taylor_swift/taylor_swift.html" target="_blank">COMPRAR</a></li>
-                </div>
-            </article>
-            </details> 
-        </section>
-        <section id="shows">
-        <article class="the_weeknd">
-            <details>
-                <summary></summary>
-                <div class="informacion_show">
-                <h4>THE WEEKND | AFTER HOURS TIL DAWN TOUR</h4>
-                <p>Fechas: 15 de Abril de 2027</p>
-                <p>Lugar: Movistar Arena</p>
-                <p>The Weeknd presenta su tour "After Hours Til Dawn" en Buenos Aires. El artista canadiense traerá todos sus éxitos incluyendo "Blinding Lights", "Save Your Tears" y "Can't Feel My Face". Una noche única con la mejor producción audiovisual y el inconfundible sonido dark-pop que lo convirtió en una superestrella mundial.</p>
-                <li><a href="./artistas/the_weeknd/the_weeknd.html" target="_blank">COMPRAR</a></li>
-                </div>
-            </article>
-            </details> 
-        </section>
-        <section id="shows">
-        <article class="billie_eilish">
-            <details>
-                <summary></summary>
-                <div class="informacion_show">
-                <h4>BILLIE EILISH | HIT ME HARD AND SOFT TOUR</h4>
-                <p>Fechas: 22 de Mayo de 2027</p>
-                <p>Lugar: Personal Fest - Tecnópolis</p>
-                <p>Billie Eilish llega a Buenos Aires con su nuevo tour "Hit Me Hard and Soft". La joven superestrella presenta sus últimos éxitos junto a clásicos como "Bad Guy" y "Happier Than Ever". Un show íntimo pero poderoso que promete conectar emocionalmente con el público argentino en un formato único e innovador.</p>
-                <li><a href="./artistas/billie_eilish/billie_eilish.html" target="_blank">COMPRAR</a></li>
-                </div>
-            </article>
-            </details> 
-        </section>
-        <section id="shows">
-        <article class="imagine_dragons">
-            <details>
-                <summary></summary>
-                <h4>IMAGINE DRAGONS | LOOM WORLD TOUR</h4>
-                <p>Fechas: 8 de Agosto - 9 de Agosto de 2027</p>
-                <p>Lugar: Estadio Único de La Plata</p>
-                <p>Imagine Dragons regresa a Argentina con su gira "Loom World Tour". La banda estadounidense presenta su nuevo álbum junto a todos sus grandes himnos como "Radioactive", "Thunder" y "Believer". Dos noches de rock alternativo con una producción espectacular y la energía única que caracteriza a sus shows en vivo.</p>
-                <li><a href="./artistas/imagine_dragons/imagine_dragons.html" target="_blank">COMPRAR</a></li>
-            </article>
-            </details> 
-        </section>
-        
-    </div>
-    </main>
+                
+                <!-- Coldplay Show -->
+                <section id="shows">
+                    <article class="coldplay">
+                        <details>
+                            <summary></summary>
+                            <div class="informacion_show">
+                                <h4>COLDPLAY | MUSIC OF THE SPHERES WORLD TOUR</h4>
+                                <p>Fechas: 25 de Noviembre - 26 de Noviembre - 28 de Noviembre de 2026</p>
+                                <p>Lugar: Estadio River Plate</p>
+                                <p>Coldplay regresa a Buenos Aires con su espectacular gira "Music of the Spheres World Tour". La banda británica promete un show único con efectos visuales impresionantes, tecnología sustentable y todos sus grandes éxitos. Una experiencia inolvidable que combina música, arte y conciencia ambiental en el icónico estadio de River Plate.</p>
+                                <li><a href="./artistas/coldplay/coldplay.html" target="_blank">COMPRAR</a></li>
+                            </div>
+                        </details> 
+                    </article>
+                </section>
+                
+                <!-- Taylor Swift Show -->
+                <section id="shows">
+                    <article class="taylor_swift">
+                        <details>
+                            <summary></summary>
+                            <div class="informacion_show">      
+                                <h4>TAYLOR SWIFT | THE ERAS TOUR</h4>
+                                <p>Fechas: 9 de Febrero - 10 de Febrero - 11 de Febrero de 2027</p>
+                                <p>Lugar: Estadio River Plate</p>
+                                <p>Taylor Swift llega por primera vez a Argentina con The Eras Tour, el espectáculo más esperado del año. Un recorrido por toda su discografía que incluye sus mayores éxitos desde sus inicios country hasta sus últimos álbumes pop. Tres noches únicas en el Monumental con más de 3 horas de música y sorpresas especiales.</p>
+                                <li><a href="./artistas/taylor_swift/taylor_swift.html" target="_blank">COMPRAR</a></li>
+                            </div>
+                        </details> 
+                    </article>
+                </section>
+                
+                <!-- The Weeknd Show -->
+                <section id="shows">
+                    <article class="the_weeknd">
+                        <details>
+                            <summary></summary>
+                            <div class="informacion_show">
+                                <h4>THE WEEKND | AFTER HOURS TIL DAWN TOUR</h4>
+                                <p>Fechas: 15 de Abril de 2027</p>
+                                <p>Lugar: Movistar Arena</p>
+                                <p>The Weeknd presenta su tour "After Hours Til Dawn" en Buenos Aires. El artista canadiense traerá todos sus éxitos incluyendo "Blinding Lights", "Save Your Tears" y "Can't Feel My Face". Una noche única con la mejor producción audiovisual y el inconfundible sonido dark-pop que lo convirtió en una superestrella mundial.</p>
+                                <li><a href="./artistas/the_weeknd/the_weeknd.html" target="_blank">COMPRAR</a></li>
+                            </div>
+                        </details> 
+                    </article>
+                </section>
+                
+                <!-- Billie Eilish Show -->
+                <section id="shows">
+                    <article class="billie_eilish">
+                        <details>
+                            <summary></summary>
+                            <div class="informacion_show">
+                                <h4>BILLIE EILISH | HIT ME HARD AND SOFT TOUR</h4>
+                                <p>Fechas: 22 de Mayo de 2027</p>
+                                <p>Lugar: Personal Fest - Tecnópolis</p>
+                                <p>Billie Eilish llega a Buenos Aires con su nuevo tour "Hit Me Hard and Soft". La joven superestrella presenta sus últimos éxitos junto a clásicos como "Bad Guy" y "Happier Than Ever". Un show íntimo pero poderoso que promete conectar emocionalmente con el público argentino en un formato único e innovador.</p>
+                                <li><a href="./artistas/billie_eilish/billie_eilish.html" target="_blank">COMPRAR</a></li>
+                            </div>
+                        </details> 
+                    </article>
+                </section>
+                
+                <!-- Imagine Dragons Show -->
+                <section id="shows">
+                    <article class="imagine_dragons">
+                        <details>
+                            <summary></summary>
+                            <div class="informacion_show">
+                                <h4>IMAGINE DRAGONS | LOOM WORLD TOUR</h4>
+                                <p>Fechas: 8 de Agosto - 9 de Agosto de 2027</p>
+                                <p>Lugar: Estadio Único de La Plata</p>
+                                <p>Imagine Dragons regresa a Argentina con su gira "Loom World Tour". La banda estadounidense presenta su nuevo álbum junto a todos sus grandes himnos como "Radioactive", "Thunder" y "Believer". Dos noches de rock alternativo con una producción espectacular y la energía única que caracteriza a sus shows en vivo.</p>
+                                <li><a href="./artistas/imagine_dragons/imagine_dragons.html" target="_blank">COMPRAR</a></li>
+                            </div>
+                        </details> 
+                    </article>
+                </section>
+                
+                <!-- Ed Sheeran Show -->
+                <section id="shows">
+                    <article class="ed_sheeran">
+                        <details>
+                            <summary></summary>
+                            <div class="informacion_show">
+                                <h4>ED SHEERAN | MATHEMATICS TOUR</h4>
+                                <p>Fechas: 15 de Septiembre - 16 de Septiembre de 2027</p>
+                                <p>Lugar: Campo Argentino de Polo</p>
+                                <p>Ed Sheeran regresa a Buenos Aires con su gira "Mathematics Tour", presentando sus últimos álbumes y todos sus grandes éxitos como "Shape of You", "Perfect" y "Thinking Out Loud". El cantautor británico promete una experiencia íntima y emotiva con su característico estilo acústico y loops en vivo.</p>
+                                <li><a href="./artistas/ed_sheeran/ed_sheeran.html" target="_blank">COMPRAR</a></li>
+                            </div>
+                        </details> 
+                    </article>
+                </section>
+                
+                <!-- Ariana Grande Show -->
+                <section id="shows">
+                    <article class="ariana_grande">
+                        <details>
+                            <summary></summary>
+                            <div class="informacion_show">
+                                <h4>ARIANA GRANDE | THE ETERNAL SUNSHINE TOUR</h4>
+                                <p>Fechas: 22 de Octubre - 23 de Octubre de 2027</p>
+                                <p>Lugar: Movistar Arena</p>
+                                <p>Ariana Grande lleva su espectacular show "The Eternal Sunshine Tour" a Buenos Aires. La superestrella del pop presenta su último álbum junto a todos sus himnos como "7 rings", "Thank U, Next" y "positions". Un show lleno de coreografías, efectos visuales impresionantes y la voz más poderosa del pop actual.</p>
+                                <li><a href="./artistas/ariana_grande/ariana_grande.html" target="_blank">COMPRAR</a></li>
+                            </div>
+                        </details> 
+                    </article>
+                </section>
+                
+                <!-- Bruno Mars Show -->
+                <section id="shows">
+                    <article class="bruno_mars">
+                        <details>
+                            <summary></summary>
+                            <div class="informacion_show">
+                                <h4>BRUNO MARS | 24K MAGIC WORLD TOUR</h4>
+                                <p>Fechas: 5 de Noviembre - 6 de Noviembre de 2027</p>
+                                <p>Lugar: Estadio River Plate</p>
+                                <p>Bruno Mars vuelve a Argentina con su energético show "24K Magic World Tour". El artista hawaiano presenta su música funk, R&B y pop con todos sus éxitos como "Uptown Funk", "24K Magic", "Just The Way You Are" y "Grenade". Una noche de puro espectáculo, baile y entretenimiento de primera clase.</p>
+                                <li><a href="./artistas/bruno_mars/bruno_mars.html" target="_blank">COMPRAR</a></li>
+                            </div>
+                        </details> 
+                    </article>
+                </section>
+                
+                <!-- Dua Lipa Show -->
+                <section id="shows">
+                    <article class="dua_lipa">
+                        <details>
+                            <summary></summary>
+                            <div class="informacion_show">
+                                <h4>DUA LIPA | RADICAL OPTIMISM TOUR</h4>
+                                <p>Fechas: 12 de Diciembre de 2027</p>
+                                <p>Lugar: River Plate</p>
+                                <p>Dua Lipa presenta su tour "Radical Optimism" en Buenos Aires. La estrella británica del pop trae todos sus hits como "Levitating", "Don't Start Now", "Physical" y "New Rules" en un show lleno de color, energía y las mejores coreografías. Una noche perfecta para bailar y cantar sin parar.</p>
+                                <li><a href="./artistas/dua_lipa/dua_lipa.html" target="_blank">COMPRAR</a></li>
+                            </div>
+                        </details> 
+                    </article>
+                </section>
+                
+                <!-- Harry Styles Show -->
+                <section id="shows">
+                    <article class="harry_styles">
+                        <details>
+                            <summary></summary>
+                            <div class="informacion_show">
+                                <h4>HARRY STYLES | LOVE ON TOUR</h4>
+                                <p>Fechas: 18 de Enero - 19 de Enero de 2028</p>
+                                <p>Lugar: Estadio River Plate</p>
+                                <p>Harry Styles llega por primera vez como solista a Argentina con "Love On Tour". El ex One Direction presenta su música indie-pop con canciones como "As It Was", "Watermelon Sugar", "Adore You" y "Sign of the Times". Un show colorido, inclusivo y lleno de buena energía que promete ser histórico.</p>
+                                <li><a href="./artistas/harry_styles/harry_styles.html" target="_blank">COMPRAR</a></li>
+                            </div>
+                        </details> 
+                    </article>
+                </section>
+                
+                <!-- Rosalía Show -->
+                <section id="shows">
+                    <article class="rosalia">
+                        <details>
+                            <summary></summary>
+                            <div class="informacion_show">
+                                <h4>ROSALÍA | MOTOMAMI WORLD TOUR</h4>
+                                <p>Fechas: 25 de Febrero de 2028</p>
+                                <p>Lugar: Personal Fest - Tecnópolis</p>
+                                <p>Rosalía trae su revolucionario "Motomami World Tour" a Buenos Aires. La artista catalana presenta su fusión única de flamenco, reggaetón y pop experimental con éxitos como "Despechá", "La Fama", "Con Altura" y "Malamente". Una experiencia artística única que redefine la música contemporánea.</p>
+                                <li><a href="./artistas/rosalia/rosalia.html" target="_blank">COMPRAR</a></li>
+                            </div>
+                        </details> 
+                    </article>
+                </section>
+            </div>
+        </main>
+    </section>
+    
+    <!-- Footer Section -->
     <footer>
         <p>&copy; 2025 Venta de Tickets para Shows</p>
-        <p>planettickets.com@gmail.com</p>
     </footer>
     
+    <!-- Scripts -->
+    <script src="auth/auth.js"></script>
+    <script src="mis-entradas.js"></script>
+    <script>
+        // ===== DOM CONTENT LOADED =====
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeUserInterface();
+            initializeSticky();
+            initializeSearchSync();
+        });
+        
+        // ===== USER INTERFACE INITIALIZATION =====
+        function initializeUserInterface() {
+            const user = getCurrentUser();
+            const userMenu = document.getElementById('user-menu');
+            const guestMenu = document.getElementById('guest-menu');
+            const userName = document.getElementById('user-name');
+            
+            // Sticky header elements
+            const stickyUserMenu = document.getElementById('sticky-user-menu');
+            const stickyGuestMenu = document.getElementById('sticky-guest-menu');
+            const userInitials = document.getElementById('userInitials');
+            
+            if (user) {
+                setupLoggedUserInterface(user, userMenu, guestMenu, userName, stickyUserMenu, stickyGuestMenu, userInitials);
+            } else {
+                setupGuestInterface(userMenu, guestMenu, stickyUserMenu, stickyGuestMenu);
+            }
+            
+            setupDropdownFunctionality();
+        }
+        
+        function getInitials(name) {
+            return name
+                .split(' ')
+                .map(word => word.charAt(0).toUpperCase())
+                .slice(0, 2)
+                .join('');
+        }
+        
+        function setupLoggedUserInterface(user, userMenu, guestMenu, userName, stickyUserMenu, stickyGuestMenu, userInitials) {
+            // Main header
+            userMenu.style.display = 'flex';
+            guestMenu.style.display = 'none';
+            userName.textContent = `¡Hola, ${user.name}!`;
+            
+            // Sticky header
+            stickyUserMenu.style.display = 'block';
+            stickyGuestMenu.style.display = 'none';
+            userInitials.textContent = getInitials(user.name);
+            
+            // Dropdown user name
+            const dropdownUserName = document.getElementById('dropdownUserName');
+            if (dropdownUserName) {
+                dropdownUserName.textContent = user.name;
+            }
+        }
+        
+        function setupGuestInterface(userMenu, guestMenu, stickyUserMenu, stickyGuestMenu) {
+            // Main header
+            userMenu.style.display = 'none';
+            guestMenu.style.display = 'flex';
+            
+            // Sticky header
+            stickyUserMenu.style.display = 'none';
+            stickyGuestMenu.style.display = 'block';
+        }
+        
+        function setupDropdownFunctionality() {
+            const userAvatarBtn = document.getElementById('userAvatarBtn');
+            const userDropdown = document.getElementById('userDropdown');
+            
+            if (userAvatarBtn && userDropdown) {
+                userAvatarBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const isOpen = userDropdown.classList.toggle('show');
+                    userAvatarBtn.classList.toggle('active', isOpen);
+                });
+                
+                // Close dropdown when clicking outside
+                document.addEventListener('click', (e) => {
+                    if (!userAvatarBtn.contains(e.target)) {
+                        userDropdown.classList.remove('show');
+                        userAvatarBtn.classList.remove('active');
+                    }
+                });
+                
+                // Close dropdown on scroll
+                window.addEventListener('scroll', () => {
+                    userDropdown.classList.remove('show');
+                    userAvatarBtn.classList.remove('active');
+                });
+            }
+        }
+        
+        // ===== STICKY HEADER FUNCTIONALITY =====
+        function initializeSticky() {
+            const stickyHeader = document.getElementById('stickyHeader');
+            let lastScrollY = window.scrollY;
+            
+            window.addEventListener('scroll', () => {
+                const currentScrollY = window.scrollY;
+                
+                if (currentScrollY > 100) {
+                    stickyHeader.classList.add('show');
+                } else {
+                    stickyHeader.classList.remove('show');
+                }
+                
+                lastScrollY = currentScrollY;
+            });
+        }
+        
+        // ===== SEARCH SYNCHRONIZATION =====
+        function initializeSearchSync() {
+            const mainSearchInput = document.getElementById('searchInput');
+            const stickySearchInput = document.getElementById('stickySearchInput');
+            
+            if (mainSearchInput && stickySearchInput) {
+                // Sync main to sticky
+                mainSearchInput.addEventListener('input', (e) => {
+                    stickySearchInput.value = e.target.value;
+                });
+                
+                // Sync sticky to main and trigger search
+                stickySearchInput.addEventListener('input', (e) => {
+                    mainSearchInput.value = e.target.value;
+                    if (window.handleSearch) {
+                        window.handleSearch(e.target.value);
+                    }
+                });
+                
+                // Sticky search button functionality
+                const stickySearchButton = document.getElementById('stickySearchButton');
+                if (stickySearchButton) {
+                    stickySearchButton.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        if (window.handleSearch) {
+                            window.handleSearch(stickySearchInput.value);
+                        }
+                    });
+                }
+                
+                // Sticky search Enter key functionality
+                stickySearchInput.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter') {
+                        e.preventDefault();
+                        if (window.handleSearch) {
+                            window.handleSearch(stickySearchInput.value);
+                        }
+                    }
+                });
+            }
+        }
+        
+        // ===== CAROUSEL FUNCTIONALITY =====
+        const carouselTrack = document.getElementById('carouselTrack');
+        const slides = document.querySelectorAll('.carousel-slide');
+        const indicators = document.querySelectorAll('.indicator');
+        let currentSlide = 0;
+        let autoSlideInterval;
+        let isUserInteracting = false;
+        
+        function goToSlide(slideIndex) {
+            // Remove active class from all slides and indicators
+            slides.forEach(slide => slide.classList.remove('active'));
+            indicators.forEach(indicator => indicator.classList.remove('active'));
+            
+            // Add active class to current slide and indicator
+            slides[slideIndex].classList.add('active');
+            indicators[slideIndex].classList.add('active');
+            
+            // Move the track
+            const translateX = -(slideIndex * (100/7));
+            carouselTrack.style.transform = `translateX(${translateX}%)`;
+            
+            currentSlide = slideIndex;
+        }
+        
+        function nextSlide() {
+            const nextIndex = (currentSlide + 1) % slides.length;
+            goToSlide(nextIndex);
+        }
+        
+        function startAutoSlide() {
+            clearInterval(autoSlideInterval);
+            autoSlideInterval = setInterval(nextSlide, 6000); // 6 seconds
+        }
+        
+        function stopAutoSlide() {
+            clearInterval(autoSlideInterval);
+        }
+        
+        // Event listeners for indicators
+        indicators.forEach((indicator, index) => {
+            indicator.addEventListener('click', () => {
+                if (currentSlide !== index) {
+                    goToSlide(index);
+                    startAutoSlide();
+                }
+            });
+        });
+        
+        // Pause auto-slide when mouse is over carousel
+        const carouselContainer = document.querySelector('.carousel-container');
+        carouselContainer.addEventListener('mouseenter', () => {
+            isUserInteracting = true;
+            stopAutoSlide();
+        });
+        
+        carouselContainer.addEventListener('mouseleave', () => {
+            isUserInteracting = false;
+            setTimeout(() => {
+                if (!isUserInteracting) {
+                    startAutoSlide();
+                }
+            }, 1000);
+        });
+        
+        // Initialize carousel
+        startAutoSlide();
+        
+        // ===== VER MAS ARTISTAS FUNCTIONALITY =====
+        function mostrarMasArtistas() {
+            // Get all sections after the "Ver más" button
+            const verMasContainer = document.querySelector('.ver-mas-container');
+            const btnVerMas = document.querySelector('.btn-ver-mas');
+            let currentElement = verMasContainer.nextElementSibling;
+            let sectionsToShow = [];
+            
+            // Collect all sections after the "Ver más" button
+            while (currentElement) {
+                if (currentElement.id === 'shows') {
+                    sectionsToShow.push(currentElement);
+                }
+                currentElement = currentElement.nextElementSibling;
+            }
+            
+            // Check if sections are currently hidden
+            const isHidden = sectionsToShow.length > 0 && sectionsToShow[0].style.display === 'none';
+            
+            if (isHidden) {
+                // Show all hidden sections with staggered animation
+                sectionsToShow.forEach((section, index) => {
+                    setTimeout(() => {
+                        section.style.display = 'block';
+                        section.style.opacity = '0';
+                        section.style.transform = 'translateY(20px)';
+                        
+                        // Trigger animation after display is set
+                        setTimeout(() => {
+                            section.style.transition = 'all 0.5s ease-in-out';
+                            section.style.opacity = '1';
+                            section.style.transform = 'translateY(0)';
+                        }, 50);
+                    }, index * 100); // Stagger the animations
+                });
+                
+                // Update button text
+                btnVerMas.textContent = 'Ver menos artistas';
+                btnVerMas.onclick = function() { ocultarArtistas(); };
+            } else {
+                // If already visible, scroll to first artist after button
+                scrollToNextArtist();
+            }
+        }
+        
+        function ocultarArtistas() {
+            // Get all sections after the "Ver más" button
+            const verMasContainer = document.querySelector('.ver-mas-container');
+            const btnVerMas = document.querySelector('.btn-ver-mas');
+            let currentElement = verMasContainer.nextElementSibling;
+            let sectionsToHide = [];
+            
+            // Collect all sections after the "Ver más" button
+            while (currentElement) {
+                if (currentElement.id === 'shows') {
+                    sectionsToHide.push(currentElement);
+                }
+                currentElement = currentElement.nextElementSibling;
+            }
+            
+            // Hide all sections with fade-out animation
+            sectionsToHide.forEach((section, index) => {
+                setTimeout(() => {
+                    section.style.transition = 'all 0.3s ease-in-out';
+                    section.style.opacity = '0';
+                    section.style.transform = 'translateY(-20px)';
+                    
+                    // Hide after animation completes
+                    setTimeout(() => {
+                        section.style.display = 'none';
+                    }, 300);
+                }, index * 50); // Stagger the hide animations
+            });
+            
+            // Update button text
+            btnVerMas.textContent = 'Ver más artistas';
+            btnVerMas.onclick = function() { mostrarMasArtistas(); };
+            
+            // Scroll back to the button
+            setTimeout(() => {
+                verMasContainer.scrollIntoView({ 
+                    behavior: 'smooth', 
+                    block: 'center' 
+                });
+            }, 500);
+        }
+        
+        function scrollToNextArtist() {
+            // Scroll to the first artist section after the button
+            const verMasButton = document.querySelector('.ver-mas-container');
+            const nextSection = verMasButton.nextElementSibling;
+            
+            if (nextSection) {
+                nextSection.scrollIntoView({ 
+                    behavior: 'smooth', 
+                    block: 'start' 
+                });
+            }
+        }
+        
+        // Initially hide all artist sections after the "Ver más" button
+        function inicializarVerMas() {
+            const verMasContainer = document.querySelector('.ver-mas-container');
+            if (!verMasContainer) return;
+            
+            let currentElement = verMasContainer.nextElementSibling;
+            
+            // Hide all sections after the "Ver más" button
+            while (currentElement) {
+                if (currentElement.id === 'shows') {
+                    currentElement.style.display = 'none';
+                }
+                currentElement = currentElement.nextElementSibling;
+            }
+        }
+        
+        // Initialize the "Ver más" functionality when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            // Wait a bit for the DOM to be fully ready
+            setTimeout(inicializarVerMas, 100);
+        });
+    </script>
     <script src="search.js"></script>
 </body>
 </html>

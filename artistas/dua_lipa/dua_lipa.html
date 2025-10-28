@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="coldplay.css">
+    <link rel="stylesheet" href="dua_lipa.css">
     <link rel="icon" href="../../imagenes/icono.png" type="image/x-icon">
-    <title>Coldplay - PlanetTickets</title>
+    <title>Dua Lipa entradas - PlanetTickets</title>
 </head>
 <body>
     <div class="header-nav">
@@ -65,25 +65,25 @@
                 <label for="lugar">Elegí tu lugar:</label>
                 <select id="lugar" name="lugar" required>
                     <option value="" disabled selected>Selecciona una opción</option>
-                    <option value="85000">Campo: $85.000</option>
-                    <option value="110000">Campo VIP: $110.000</option>
-                    <option value="95000">Platea: $95.000</option>
-                    <option value="130000">Platea VIP: $130.000</option>
+                    <option value="campo">Campo: 24.000$</option>
+                    <option value="campo_vip">Campo VIP: 32.000$</option>
+                    <option value="platea_baja">Platea Baja: 28.000$</option>
+                    <option value="platea_media">Platea Media: 30.000$</option>
+                    <option value="platea_alta">Platea Alta: 35.000$</option>
                 </select>
-                
-                <div class="precio-total">
-                    <h3>Precio Total: <span id="total">$0</span></h3>
-                </div>
                 
                 <button type="submit">Comprar</button>
 
                 <div class="spotify-box">
-                    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/album/06mXfvDsRZNfnsGZvX2zpb?si=ZAZoPMKrQxWzId1uGaeaUA?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture" loading="lazy"></iframe>
+                    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/artist/6M2wZ9GZgrQXHCFfjv46we?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture" loading="lazy"></iframe>
                 </div>
             </form>
-    
+    </section>
+
     <script src="../../auth/auth.js"></script>
-    <script src="../../mis-entradas.js"></script>    <script>
+    <script src="../../mis-entradas.js"></script>
+    <script src="../../ticket-calculator.js"></script>
+    <script>
         function getUserInitials(name) {
             return name.split(' ')
                       .map(word => word.charAt(0).toUpperCase())
@@ -106,24 +106,23 @@
             }
         });
         
-        document.addEventListener("DOMContentLoaded", function() {
+        document.addEventListener('DOMContentLoaded', function() {
             const user = getCurrentUser();
-            const userMenu = document.getElementById("user-menu");
-            const guestMenu = document.getElementById("guest-menu");
-            const userName = document.getElementById("user-name");
+            const userMenu = document.getElementById('user-menu');
+            const guestMenu = document.getElementById('guest-menu');
+            const userName = document.getElementById('user-name');
             const userInitials = document.getElementById('user-initials');
             
             if (user) {
-                userMenu.style.display = "flex";
-                guestMenu.style.display = "none";
+                userMenu.style.display = 'flex';
+                guestMenu.style.display = 'none';
                 userName.textContent = `¡Hola, ${user.name}!`;
                 userInitials.textContent = getUserInitials(user.name);
             } else {
-                userMenu.style.display = "none";
-                guestMenu.style.display = "flex";
+                userMenu.style.display = 'none';
+                guestMenu.style.display = 'flex';
             }
         });
     </script>
-    <script src="../../ticket-calculator.js"></script>
 </body>
 </html>

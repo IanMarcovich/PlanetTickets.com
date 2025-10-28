@@ -1,5 +1,5 @@
 body{
-    background-color: rgba(255, 69, 0, 0.892);
+    background-color: rgba(77, 96, 98, 0.863);
     font-family: Montserrat ;
     src: url("fonts/Montserrat-Regular.ttf") format("truetype");
 }
@@ -14,7 +14,7 @@ form {
     gap: 15px;
     max-width: 400px;
     margin: auto;
-    background-image: url('../../imagenes/imagine_dragons.png');
+    background-image: url('../../imagenes/artista_imagine.png');
     background-size: cover;
     background-position: center;
     border-radius: 15px;
@@ -108,7 +108,7 @@ select {
     padding: 32px 24px 0 24px;
 }
 .btn-user {
-    background: rgba(255, 69, 0, 0.8);
+    background: rgba(77, 96, 98, 0.863);
     color: aliceblue;
     padding: 8px 18px;
     border-radius: 6px;
@@ -120,11 +120,10 @@ select {
 }
 
 .btn-user:hover {
-    background: #ff4500;
+    background: rgba(77, 96, 98, 0.274);
     color: #fff;
 }
 
-/* Precio Total */
 .precio-total {
     background: rgba(0,0,0,0.6);
     border: 2px solid rgba(255, 255, 255, 0.2);
@@ -166,4 +165,116 @@ select {
 .precio-actualizado #total {
     transform: scale(1.05);
     text-shadow: 0 4px 10px rgba(0, 0, 0, 0.9);
+}
+.header-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 24px;
+}
+
+.user-actions {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}
+
+#user-menu, #guest-menu {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.user-avatar-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.user-avatar {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #4d6062, #6b7b7d);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 16px;
+    color: white;
+    border: 3px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.user-avatar:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 55px;
+    right: 0;
+    background: linear-gradient(135deg, #4d6062, #6b7b7d);
+    border-radius: 12px;
+    padding: 15px;
+    min-width: 200px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+.dropdown-menu.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.dropdown-menu::before {
+    content: '';
+    position: absolute;
+    top: -8px;
+    right: 20px;
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 8px solid #4d6062;
+}
+
+.user-info {
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    margin-bottom: 10px;
+}
+
+.user-greeting {
+    font-weight: 600;
+    font-size: 14px;
+    text-transform: none;
+    letter-spacing: normal;
+    padding: 8px 16px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.btn-user {
+    cursor: pointer;
+}
+
+.btn-logout {
+    background: rgba(220, 53, 69, 0.8) !important;
+    color: white !important;
+}
+
+.btn-logout:hover {
+    background: rgba(220, 53, 69, 1) !important;
+    color: white !important;
 }

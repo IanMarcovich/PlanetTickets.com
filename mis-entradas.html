@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mis Entradas - PlanetTickets</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="imagenes/icono.png" type="image/x-icon">
+    <style>
+        .mis-entradas-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            min-height: 100vh;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .page-title {
+            font-size: 2.5em;
+            color: #00ffff;
+            margin-bottom: 10px;
+            text-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+        }
+
+        .page-subtitle {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1.1em;
+        }
+
+        .tickets-section {
+            margin-top: 40px;
+        }
+
+        .section-title {
+            font-size: 1.8em;
+            color: #fff;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        .ticket-card.new-purchase {
+            animation: highlightPulse 2s ease-in-out;
+            border-color: rgba(0, 255, 255, 0.8);
+            box-shadow: 0 15px 40px rgba(0, 255, 255, 0.3);
+        }
+
+        .new-badge {
+            background: linear-gradient(135deg, #00ffff, #0099cc);
+            color: #001a1a;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.8em;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-left: auto;
+            animation: badgePulse 1.5s ease-in-out infinite;
+        }
+
+        @keyframes highlightPulse {
+            0%, 100% { 
+                border-color: rgba(0, 255, 255, 0.3);
+                box-shadow: 0 15px 40px rgba(0, 255, 255, 0.15);
+            }
+            50% { 
+                border-color: rgba(0, 255, 255, 0.8);
+                box-shadow: 0 15px 40px rgba(0, 255, 255, 0.4);
+            }
+        }
+
+        @keyframes badgePulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .ticket-card {
+            background: rgba(0, 46, 54, 0.9);
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            border-radius: 20px;
+            margin-bottom: 20px;
+            overflow: hidden;
+            backdrop-filter: blur(15px);
+            transition: all 0.3s ease;
+        }
+
+        .ticket-card:hover {
+            transform: translateX(10px);
+            border-color: rgba(0, 255, 255, 0.6);
+            box-shadow: 0 15px 40px rgba(0, 255, 255, 0.15);
+        }
+
+        .ticket-header {
+            display: flex;
+            align-items: center;
+            padding: 25px;
+            background: rgba(0, 35, 41, 0.8);
+            border-bottom: 1px solid rgba(0, 255, 255, 0.2);
+        }
+
+        .ticket-artist-img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 20px;
+            border: 2px solid rgba(0, 255, 255, 0.3);
+        }
+
+        .ticket-info h3 {
+            color: #00ffff;
+            margin: 0 0 8px 0;
+            font-size: 1.4em;
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+        }
+
+        .ticket-date {
+            color: rgba(255, 255, 255, 0.7);
+            margin: 0;
+            font-size: 0.9em;
+        }
+
+        .ticket-details {
+            padding: 25px;
+        }
+
+        .detail-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+            padding: 8px 0;
+        }
+
+        .detail-row:last-child {
+            margin-bottom: 0;
+        }
+
+        .detail-row.total {
+            border-top: 1px solid rgba(0, 255, 255, 0.3);
+            margin-top: 15px;
+            padding-top: 15px;
+            font-size: 1.1em;
+        }
+
+        .detail-row span {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .detail-row strong {
+            color: #00ffff;
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+        }
+
+        .ticket-actions {
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(0, 255, 255, 0.2);
+            text-align: center;
+        }
+
+        .return-ticket-btn {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a52);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+        }
+
+        .return-ticket-btn:hover {
+            background: linear-gradient(135deg, #ff5252, #e53935);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 107, 107, 0.4);
+        }
+
+        .return-ticket-btn:active {
+            transform: translateY(0);
+        }
+
+        .return-ticket-btn svg {
+            transition: transform 0.3s ease;
+        }
+
+        .return-ticket-btn:hover svg {
+            transform: rotate(-90deg);
+        }
+
+        .no-tickets {
+            text-align: center;
+            padding: 60px 20px;
+            background: rgba(0, 46, 54, 0.8);
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        .no-tickets h3 {
+            color: #00ffff;
+            font-size: 1.8em;
+            margin-bottom: 15px;
+        }
+
+        .no-tickets p {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 25px;
+            font-size: 1.1em;
+        }
+
+        .buy-tickets-btn, .login-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #00ffff, #0099cc);
+            color: #001a1a;
+            padding: 12px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .buy-tickets-btn:hover, .login-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 255, 255, 0.3);
+        }
+
+        .auth-redirect {
+            text-align: center;
+            padding: 100px 20px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .auth-redirect h2 {
+            color: #00ffff;
+            font-size: 2.2em;
+            margin-bottom: 20px;
+        }
+
+        .auth-redirect p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.2em;
+            margin-bottom: 30px;
+        }
+
+        @media (max-width: 768px) {
+            .mis-entradas-container {
+                padding: 20px 10px;
+            }
+
+            .ticket-header {
+                flex-direction: column;
+                text-align: center;
+                padding: 20px;
+            }
+
+            .ticket-artist-img {
+                margin-right: 0;
+                margin-bottom: 15px;
+            }
+
+            .ticket-card:hover {
+                transform: translateY(-5px);
+            }
+
+            .detail-row {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 5px;
+            }
+
+            .return-ticket-btn {
+                font-size: 0.8em;
+                padding: 8px 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header principal -->
+    <header>
+        <div class="user-actions" id="user-actions">
+            <div id="user-menu" style="display: none;">
+                <span id="user-name" class="user-greeting"></span>
+                <button onclick="logout(); window.location.href='index.html';" class="btn-user btn-logout">Cerrar Sesión</button>
+            </div>
+            <div id="guest-menu">
+                <a href="auth/login.html" class="btn-user">Iniciar Sesión</a>
+                <a href="auth/registro.html" class="btn-user">Crear Cuenta</a>
+            </div>
+            <a href="index.html" class="btn-user">Volver al Inicio</a>
+        </div>
+        <h1>
+            <a href="index.html" style="text-decoration: none; color: rgb(0, 46, 54); display: flex; align-items: center; justify-content: center; gap: 12px;">
+                <img src="imagenes/icono.png" alt="PlanetTickets Logo" class="header-logo">
+                PlanetTickets.com
+            </a>
+            <p>Mis Entradas Compradas</p>
+        </h1>     
+    </header>
+
+    <!-- Header Sticky -->
+    <header class="sticky-header" id="stickyHeader">
+        <div class="sticky-header-content">
+            <div class="sticky-logo">
+                <img src="imagenes/icono.png" alt="PlanetTickets Logo" class="sticky-logo-img">
+                <span class="sticky-title">PlanetTickets</span>
+            </div>
+            
+            <div class="sticky-search">
+                <input type="text" class="sticky-search-input" placeholder="Buscar..." id="stickySearchInput">
+                <button class="sticky-search-button" type="button" id="stickySearchButton">
+                    <svg class="sticky-search-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M21 21L16.514 16.506M19 10.5C19 15.194 15.194 19 10.5 19C5.806 19 2 15.194 2 10.5C2 5.806 5.806 2 10.5 2C15.194 2 19 5.806 19 10.5Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+            </div>
+            
+            <div class="sticky-user-actions">
+                <div id="sticky-user-menu" style="display: none;" class="sticky-user-dropdown">
+                    <button class="user-avatar-btn" id="userAvatarBtn">
+                        <div class="user-initials" id="userInitials">U</div>
+                        <svg class="dropdown-arrow" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                    <div class="dropdown-menu" id="userDropdown">
+                        <div class="dropdown-header">
+                            <span id="dropdownUserName">Usuario</span>
+                        </div>
+                        <div class="dropdown-divider"></div>
+                        <a href="mis-entradas.html" class="dropdown-item">
+                            <svg class="dropdown-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M9 12L11 14L15 10M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            Ver mis Entradas
+                        </a>
+                        <button onclick="logout(); window.location.href='index.html';" class="dropdown-item dropdown-logout">
+                            <svg class="dropdown-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M9 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V5C3 4.46957 3.21071 3.96086 3.58579 3.58579C3.96086 3.21071 4.46957 3 5 3H9M16 17L21 12M21 12L16 7M21 12H9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            Cerrar Sesión
+                        </button>
+                    </div>
+                </div>
+                <div id="sticky-guest-menu">
+                    <a href="auth/login.html" class="sticky-btn">Iniciar Sesión</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Contenido principal -->
+    <main class="mis-entradas-container">
+        <div class="page-header">
+            <h1 class="page-title">Mis Entradas</h1>
+            <p class="page-subtitle">Aquí puedes ver todas las entradas que has comprado</p>
+        </div>
+
+        <div class="tickets-section">
+            <div id="tickets-container"></div>
+        </div>
+    </main>
+
+    <script src="auth/auth.js"></script>
+    <script src="mis-entradas.js"></script>
+    <script src="search.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Inicializar autenticación en header principal
+            const user = getCurrentUser();
+            const userMenu = document.getElementById('user-menu');
+            const guestMenu = document.getElementById('guest-menu');
+            const userName = document.getElementById('user-name');
+            
+            if (user) {
+                userMenu.style.display = 'flex';
+                guestMenu.style.display = 'none';
+                userName.textContent = `¡Hola, ${user.name}!`;
+            } else {
+                userMenu.style.display = 'none';
+                guestMenu.style.display = 'flex';
+            }
+
+            // Inicializar sticky header
+            initializeStickyHeader();
+            
+            // Mostrar entradas
+            displayMyTickets();
+        });
+
+        // Funciones del sticky header
+        function initializeStickyHeader() {
+            const user = getCurrentUser();
+            
+            // Elementos del sticky header
+            const stickyHeader = document.getElementById('stickyHeader');
+            const stickyUserMenu = document.getElementById('sticky-user-menu');
+            const stickyGuestMenu = document.getElementById('sticky-guest-menu');
+            const userInitials = document.getElementById('userInitials');
+            
+            // Función para obtener iniciales
+            function getInitials(name) {
+                return name.split(' ')
+                    .map(word => word.charAt(0))
+                    .join('')
+                    .toUpperCase()
+                    .substring(0, 2);
+            }
+            
+            if (user) {
+                stickyUserMenu.style.display = 'block';
+                stickyGuestMenu.style.display = 'none';
+                
+                const initials = getInitials(user.name);
+                userInitials.textContent = initials;
+                
+                const dropdownUserName = document.getElementById('dropdownUserName');
+                if (dropdownUserName) {
+                    dropdownUserName.textContent = user.name;
+                }
+            } else {
+                stickyUserMenu.style.display = 'none';
+                stickyGuestMenu.style.display = 'block';
+            }
+
+            // Scroll detection para mostrar sticky header
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 100) {
+                    stickyHeader.classList.add('show');
+                } else {
+                    stickyHeader.classList.remove('show');
+                }
+            });
+        }
+
+        // Función para toggle del dropdown
+        function toggleDropdown() {
+            const dropdown = document.getElementById('userDropdown');
+            const button = document.getElementById('userAvatarBtn');
+            
+            dropdown.classList.toggle('show');
+            button.classList.toggle('active');
+        }
+
+        // Cerrar dropdown al hacer click fuera
+        document.addEventListener('click', function(event) {
+            const dropdown = document.getElementById('userDropdown');
+            const button = document.getElementById('userAvatarBtn');
+            
+            if (!dropdown || !button) return;
+            
+            const isClickInsideDropdown = dropdown.contains(event.target);
+            const isClickOnButton = button.contains(event.target);
+            
+            if (!isClickInsideDropdown && !isClickOnButton) {
+                dropdown.classList.remove('show');
+                button.classList.remove('active');
+            }
+        });
+
+        // Función para búsqueda en sticky header
+        function performSearch() {
+            const searchInput = document.getElementById('stickySearchInput');
+            const query = searchInput ? searchInput.value.trim() : '';
+            
+            if (query) {
+                window.location.href = `index.html?search=${encodeURIComponent(query)}`;
+            }
+        }
+
+        // Event listeners para búsqueda
+        const stickySearchInput = document.getElementById('stickySearchInput');
+        const stickySearchButton = document.getElementById('stickySearchButton');
+        
+        if (stickySearchInput) {
+            stickySearchInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    performSearch();
+                }
+            });
+        }
+        
+        if (stickySearchButton) {
+            stickySearchButton.addEventListener('click', performSearch);
+        }
+
+        // Event listener para el botón de avatar
+        const userAvatarBtn = document.getElementById('userAvatarBtn');
+        if (userAvatarBtn) {
+            userAvatarBtn.addEventListener('click', toggleDropdown);
+        }
+    </script>
+</body>
+</html>

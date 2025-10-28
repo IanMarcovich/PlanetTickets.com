@@ -1,0 +1,367 @@
+body{
+    background-color: rgba(255, 215, 0, 0.892);
+    font-family: Montserrat ;
+    src: url("fonts/Montserrat-Regular.ttf") format("truetype");
+}
+
+.header-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 25px;
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    margin: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.header-nav img{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+}
+
+.header-nav img:hover{
+    transform: scale(1.1);
+}
+
+.user-avatar-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.user-avatar {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #daa520, #b8860b);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 16px;
+    color: white;
+    border: 3px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.user-avatar:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 55px;
+    right: 0;
+    background: linear-gradient(135deg, #daa520, #b8860b);
+    border-radius: 12px;
+    padding: 15px;
+    min-width: 200px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+.dropdown-menu.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.dropdown-menu::before {
+    content: '';
+    position: absolute;
+    top: -8px;
+    right: 20px;
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 8px solid #daa520;
+}
+
+.user-info {
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    margin-bottom: 10px;
+}
+
+.btn-logout {
+    width: 100%;
+    padding: 10px 15px;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.btn-logout:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.4);
+    transform: translateY(-2px);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 400px;
+    margin: auto;
+    background-image: url('../../imagenes/bruno_mars.jpg');
+    background-size: cover;
+    background-position: center;
+    border-radius: 15px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    padding: 30px;
+    min-height: 500px;
+    color: white;
+    position: relative;
+    z-index: 1;
+}
+
+form label,
+form input,
+form select,
+form button {
+    background: rgba(0,0,0,0.5);
+    border-radius: 5px;
+    color: white;
+    border: none;
+    font-size: 16px;
+    padding: 10px;
+    outline: none;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    text-align: center;
+}
+
+label, input, button {
+    width: 100%;
+    box-sizing: border-box;
+    font-family: 'Montserrat';
+}
+
+h2{
+    text-align: center;
+    color: white;
+    font-size: 40px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+input {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+button {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #4CAF50;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+label {
+    color: white;
+    font-size: 18px;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    text-align: center;
+    display: block;
+    margin-top: 10px;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.error {
+    color: red;
+    font-size: 14px;
+    margin-top: -10px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+select {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: white;
+}
+
+.user-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 16px;
+}
+
+#guest-menu {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.btn-user {
+    background: rgba(218, 165, 32, 0.8);
+    color: white;
+    padding: 8px 18px;
+    border-radius: 6px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.2s;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-user:hover {
+    background: rgba(218, 165, 32, 1);
+}
+
+/* ===== USER DROPDOWN MENU STYLES ===== */
+.dropdown-menu {
+    position: absolute;
+    top: 50px;
+    right: 0;
+    background: linear-gradient(135deg, rgba(255, 165, 0, 0.95), rgba(255, 140, 0, 0.9));
+    backdrop-filter: blur(15px);
+    border-radius: 16px;
+    padding: 8px;
+    min-width: 220px;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1000;
+}
+
+.dropdown-menu.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.dropdown-header {
+    padding: 16px 12px 8px 12px;
+    text-align: center;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.dropdown-header .user-greeting {
+    color: #333;
+    font-weight: 600;
+    font-size: 14px;
+    display: block;
+}
+
+.dropdown-divider {
+    height: 1px;
+    background: rgba(0, 0, 0, 0.1);
+    margin: 8px 0;
+}
+
+.dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    border-radius: 12px;
+    color: #333;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    background: none;
+    border: none;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin: 2px 0;
+}
+
+.dropdown-item:hover {
+    background: rgba(0, 0, 0, 0.1);
+    transform: translateX(4px);
+}
+
+.dropdown-logout:hover {
+    background: rgba(255, 69, 0, 0.2);
+}
+
+.dropdown-icon {
+    width: 18px;
+    height: 18px;
+    stroke: currentColor;
+    flex-shrink: 0;
+}
+
+.user-greeting {
+    color: white;
+    font-weight: 500;
+    font-size: 14px;
+    text-align: center;
+}
+
+.spotify-box {
+    margin-top: 20px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .header-nav {
+        padding: 10px 15px;
+        margin: 10px;
+    }
+    
+    .user-actions {
+        gap: 10px;
+    }
+    
+    .btn-user {
+        padding: 6px 12px;
+        font-size: 12px;
+    }
+    
+    form {
+        margin: 20px 15px;
+        padding: 20px;
+    }
+    
+    h2 {
+        font-size: 28px;
+    }
+}
