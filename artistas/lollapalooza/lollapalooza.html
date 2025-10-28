@@ -36,11 +36,15 @@
                 <label for="lugar">Elegí tu lugar:</label>
                 <select id="lugar" name="lugar" required>
                     <option value="" disabled selected>Selecciona una opción</option>
-                    <option value="campo">Campo: 75.000$</option>
-                    <option value="campo_vip">Campo VIP 100.000$</option>
-                    <option value="platea">Platea 85.000$</option>
-                    <option value="platea_vip">Platea VIP 120.000$</option>
+                    <option value="75000">Campo: $75.000</option>
+                    <option value="100000">Campo VIP: $100.000</option>
+                    <option value="85000">Platea: $85.000</option>
+                    <option value="120000">Platea VIP: $120.000</option>
                 </select>
+                
+                <div class="precio-total">
+                    <h3>Precio Total: <span id="total">$0</span></h3>
+                </div>
                 
                 <button type="submit">Comprar</button>
 
@@ -48,5 +52,7 @@
                     <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/182krEsBsawQ9FSdBLQoEC?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture" loading="lazy"></iframe>
                 </div>
             </form>
+    
+    <script src="../../ticket-calculator.js"></script>
 </body>
 </html>

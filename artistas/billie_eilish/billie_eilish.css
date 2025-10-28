@@ -1,5 +1,5 @@
 body{
-    background-color: rgba(97, 2, 2, 0.892);
+    background-color: rgba(4, 0, 255, 0.892);
     font-family: Montserrat ;
     src: url("fonts/Montserrat-Regular.ttf") format("truetype");
 }
@@ -14,7 +14,7 @@ form {
     gap: 15px;
     max-width: 400px;
     margin: auto;
-    background-image: url('duki.png');
+    background-image: url('../../imagenes/artista_billie.jpg');
     background-size: cover;
     background-position: center;
     border-radius: 15px;
@@ -64,13 +64,13 @@ button {
     padding: 10px;
     border: none;
     border-radius: 5px;
-    background-color: #4CAF50;
+    background-color: #614caf;
     color: white;
     font-size: 16px;
     cursor: pointer;
 }
 button:hover {
-    background-color: #45a049;
+    background-color: #4549a0;
 }
 label {
     color: white;
@@ -108,8 +108,8 @@ select {
     padding: 32px 24px 0 24px;
 }
 .btn-user {
-    background: rgb(96, 23, 23);
-    color: aliceblue;
+    background: rgba(0, 51, 255, 0.8);
+    color: rgb(0, 0, 0);
     padding: 8px 18px;
     border-radius: 6px;
     font-weight: 600;
@@ -120,8 +120,8 @@ select {
 }
 
 .btn-user:hover {
-    background: #b71c1c;
-    color: #fff;
+    background: #3300ff;
+    color: #000;
 }
 
 /* Precio Total */
@@ -157,13 +157,13 @@ select {
 
 .precio-actualizado {
     transform: scale(1.02);
-    border-color: rgba(255, 215, 0, 0.6);
+    border-color: rgba(255, 255, 255, 0.4);
     box-shadow: 
         0 6px 20px rgba(0, 0, 0, 0.4),
-        0 0 20px rgba(255, 215, 0, 0.3);
+        0 0 20px rgba(255, 255, 255, 0.2);
 }
 
 .precio-actualizado #total {
     transform: scale(1.05);
-    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9);
+    text-shadow: 0 4px 10px rgba(0, 0, 0, 0.9);
 }

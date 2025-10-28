@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PlanetTickets.com</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" href="imagenes/icono.png" type="image/x-icon">
 </head>
@@ -16,66 +20,91 @@
             <a href="mis_entradas/mis_entradas.html" class="btn-user">Ver mis Entradas</a>
         </div>
         <h1>
-            <a href="index.html" style="text-decoration: none; color: rgb(0, 46, 54);">PlanetTickets.com</a>
+            <a href="index.html" style="text-decoration: none; color: rgb(0, 46, 54); display: flex; align-items: center; justify-content: center; gap: 12px;">
+                <img src="imagenes/icono.png" alt="PlanetTickets Logo" class="header-logo">
+                PlanetTickets.com
+            </a>
             <p>Tu portal para comprar entradas a los mejores shows y eventos.</p>
         </h1>     
     </header>
 
-    <h2>PROXIMOS SHOWS</h2>
+    <!-- Barra de búsqueda -->
+    <div class="search-container">
+        <div class="search-wrapper">
+            <input type="text" class="search-input" placeholder="Buscar artistas, eventos o lugares..." id="searchInput">
+            <button class="search-button" type="button" id="searchButton">
+                <svg class="search-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 21L16.514 16.506M19 10.5C19 15.194 15.194 19 10.5 19C5.806 19 2 15.194 2 10.5C2 5.806 5.806 2 10.5 2C15.194 2 19 5.806 19 10.5Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </button>
+            <div class="search-suggestions" id="searchSuggestions">
+            </div>
+        </div>
+    </div>
+
+    <h2>PRóXIMOS SHOWS</h2>
     <main>
     <div class="contendor">
         <section id="shows">
         <article class="duki">
             <details>
-                <summary>Haz Click para ver las entradas para DUKI</summary>
+                <summary></summary>
+                <div class="informacion_show">
                 <h4>DUKI | AMERI TOUR</h4>
                 <p>Fecha: 10 de octubre de 2025</p>
                 <p>Lugar: Movistar Arena</p>
                 <p>Ameri es el cuarto álbum de estudio del rapero y compositor argentino Duki, lanzado mundialmente el 31 de octubre de 2024 a través de Dale Play Records y SSJ Records. El álbum rompió varios récords de ventas y streaming, a nivel regional y mundial</p>
-                <li><a href="./artistas/duki/duki.html" target="_blank">COMPRAR</a></li>
+                <li><a href="./artistas/duki/duki.html" target="noopener">COMPRAR</a></li>
+                </div>
             </article>
             </details> 
         </section>
         <section id="shows">
-        <article class="    BAD BUNNY">
+        <article class="BAD_BUNNY">
             <details>
-                <summary>Haz Click para ver las entradas para BAD BUNNY</summary>
+                <summary></summary>
+                <div class="informacion_show">
                 <h4>BAD BUNNY | DeBÍ TiRAR MáS FOToS</h4>
                 <p>Fechas: 13 de Febrero - 14 de Febrero - 15 de Febrero de 2026</p>
                 <p>Lugar: River Plate</p>
                 <p>Debi tirar mas fotos es el séxto álbum de estudio grabado por el cantante puertorriqueño Bad Bunny. Se lanzó el 5 de enero de 2025 a través de la compañía discográfica Rimas Entertainment precediendo el lanzamiento de su anterior álbum Nadie sabe lo que va a pasar mañana (2023). Contiene colaboraciones con Chuwi, Dei V, Pleneros de la Cresta, Omar Courtz y RaiNao. Además, es el álbum con el que el cantante explora la animación de stop motion.</p>
                 <li><a href="./artistas/bad bunny/badbunny.html" target="_blank">COMPRAR</a></li>
+                </div>
             </article>
             </details> 
         </section>
         <section id="shows">
         <article class="lollapalooza">
             <details>
-                <summary>Haz Click para ver las entradas para LOLLAPALOOZA</summary>
+                <summary></summary>
+                <div class="informacion_show">
                 <h4>lollapalooza 2026</h4>
                 <p>Fecha: 13 de Marzo - 14 de Marzo - 15 de Marzo de 2026</p>
                 <p>Lugar: Hipodromo de San Isidro</p>
                 <p>Lollapalooza 2026 es la próxima edición del festival de música internacional que se realizará en Argentina los días 13, 14 y 15 de marzo en el Hipódromo de San Isidro. El evento de tres días presenta un extenso lineup de artistas de renombre mundial y figuras locales de diversos géneros, incluyendo pop, hip-hop, rock y electrónica. Además de la música, el festival ofrece arte, gastronomía, y propuestas para la familia.</p>
                 <li><a href="./artistas/lollapalooza/lollapalooza.html" target="_blank">COMPRAR</a></li>
+                </div>
             </article>
             </details> 
         </section>
         <section id="shows">
         <article class="alejandro_sanz">
             <details>
-                <summary>Haz Click para ver las entradas para ALEJANDRO SANZ</summary>
+                <summary></summary>
+                <div class="informacion_show">
                 <h4>ALEJANDRO SANZ | ¿Y ahora qué?</h4>
                 <p>Fechas: 6 de marzo de 2026</p>
                 <p>Lugar: Campo de Polo de Buenos Aires</p>
                 <p>El tour "¿Y Ahora Qué?" de Alejandro Sanz continuará en 2026 con presentaciones en Ecuador, Colombia, Perú, Chile y Argentina, comenzando en febrero y extendiéndose hasta marzo de ese año, y ya tiene fechas confirmadas en Latinoamérica y España. Después de agotar localidades en México, la gira incluirá los grandes éxitos de Sanz y lo más reciente de su repertorio. . </p>
                 <li><a href="artistas/alejandro_sanz/alejandro_sanz.html" target="_blank">COMPRAR</a></li>
+                </div>
             </article>
             </details> 
         </section>
                 <section id="shows">
         <article class="guns_n_roses">
             <details>
-                <summary>Haz Click para ver las entradas para GUNS N' ROSES</summary>
+                <summary></summary>
                 <h4>GUNS N' ROSES</h4>
                 <p>Fechas: 17 de OCTUBRE - 18 de OCTUBRE de 2026</p>
                 <p>Lugar: Estadio TOMÁS A DUCÓ (C.A HURACAN)</p>
@@ -84,10 +113,82 @@
             </article>
             </details> 
         </section>
+        <section id="shows">
+        <article class="coldplay">
+            <details>
+                <summary></summary>
+                <div class="informacion_show">
+                <h4>COLDPLAY | MUSIC OF THE SPHERES WORLD TOUR</h4>
+                <p>Fechas: 25 de Noviembre - 26 de Noviembre - 28 de Noviembre de 2026</p>
+                <p>Lugar: Estadio River Plate</p>
+                <p>Coldplay regresa a Buenos Aires con su espectacular gira "Music of the Spheres World Tour". La banda británica promete un show único con efectos visuales impresionantes, tecnología sustentable y todos sus grandes éxitos. Una experiencia inolvidable que combina música, arte y conciencia ambiental en el icónico estadio de River Plate.</p>
+                <li><a href="./artistas/coldplay/coldplay.html" target="_blank">COMPRAR</a></li>
+                </div>
+            </article>
+            </details> 
+        </section>
+        <section id="shows">
+        <article class="taylor_swift">
+            <details>
+                <summary></summary>
+                <div class="informacion_show">      
+                <h4>TAYLOR SWIFT | THE ERAS TOUR</h4>
+                <p>Fechas: 9 de Febrero - 10 de Febrero - 11 de Febrero de 2027</p>
+                <p>Lugar: Estadio River Plate</p>
+                <p>Taylor Swift llega por primera vez a Argentina con The Eras Tour, el espectáculo más esperado del año. Un recorrido por toda su discografía que incluye sus mayores éxitos desde sus inicios country hasta sus últimos álbumes pop. Tres noches únicas en el Monumental con más de 3 horas de música y sorpresas especiales.</p>
+                <li><a href="./artistas/taylor_swift/taylor_swift.html" target="_blank">COMPRAR</a></li>
+                </div>
+            </article>
+            </details> 
+        </section>
+        <section id="shows">
+        <article class="the_weeknd">
+            <details>
+                <summary></summary>
+                <div class="informacion_show">
+                <h4>THE WEEKND | AFTER HOURS TIL DAWN TOUR</h4>
+                <p>Fechas: 15 de Abril de 2027</p>
+                <p>Lugar: Movistar Arena</p>
+                <p>The Weeknd presenta su tour "After Hours Til Dawn" en Buenos Aires. El artista canadiense traerá todos sus éxitos incluyendo "Blinding Lights", "Save Your Tears" y "Can't Feel My Face". Una noche única con la mejor producción audiovisual y el inconfundible sonido dark-pop que lo convirtió en una superestrella mundial.</p>
+                <li><a href="./artistas/the_weeknd/the_weeknd.html" target="_blank">COMPRAR</a></li>
+                </div>
+            </article>
+            </details> 
+        </section>
+        <section id="shows">
+        <article class="billie_eilish">
+            <details>
+                <summary></summary>
+                <div class="informacion_show">
+                <h4>BILLIE EILISH | HIT ME HARD AND SOFT TOUR</h4>
+                <p>Fechas: 22 de Mayo de 2027</p>
+                <p>Lugar: Personal Fest - Tecnópolis</p>
+                <p>Billie Eilish llega a Buenos Aires con su nuevo tour "Hit Me Hard and Soft". La joven superestrella presenta sus últimos éxitos junto a clásicos como "Bad Guy" y "Happier Than Ever". Un show íntimo pero poderoso que promete conectar emocionalmente con el público argentino en un formato único e innovador.</p>
+                <li><a href="./artistas/billie_eilish/billie_eilish.html" target="_blank">COMPRAR</a></li>
+                </div>
+            </article>
+            </details> 
+        </section>
+        <section id="shows">
+        <article class="imagine_dragons">
+            <details>
+                <summary></summary>
+                <h4>IMAGINE DRAGONS | LOOM WORLD TOUR</h4>
+                <p>Fechas: 8 de Agosto - 9 de Agosto de 2027</p>
+                <p>Lugar: Estadio Único de La Plata</p>
+                <p>Imagine Dragons regresa a Argentina con su gira "Loom World Tour". La banda estadounidense presenta su nuevo álbum junto a todos sus grandes himnos como "Radioactive", "Thunder" y "Believer". Dos noches de rock alternativo con una producción espectacular y la energía única que caracteriza a sus shows en vivo.</p>
+                <li><a href="./artistas/imagine_dragons/imagine_dragons.html" target="_blank">COMPRAR</a></li>
+            </article>
+            </details> 
+        </section>
         
     </div>
     </main>
     <footer>
         <p>&copy; 2025 Venta de Tickets para Shows</p>
+        <p>planettickets.com@gmail.com</p>
+    </footer>
+    
+    <script src="search.js"></script>
 </body>
 </html>

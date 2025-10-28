@@ -1,5 +1,5 @@
 body{
-    background-color: rgba(97, 2, 2, 0.892);
+    background-color: rgba(139, 0, 139, 0.892);
     font-family: Montserrat ;
     src: url("fonts/Montserrat-Regular.ttf") format("truetype");
 }
@@ -14,7 +14,7 @@ form {
     gap: 15px;
     max-width: 400px;
     margin: auto;
-    background-image: url('duki.png');
+    background-image: url('../../imagenes/theweeknd.png');
     background-size: cover;
     background-position: center;
     border-radius: 15px;
@@ -108,7 +108,7 @@ select {
     padding: 32px 24px 0 24px;
 }
 .btn-user {
-    background: rgb(96, 23, 23);
+    background: rgba(139, 0, 139, 0.8);
     color: aliceblue;
     padding: 8px 18px;
     border-radius: 6px;
@@ -120,7 +120,7 @@ select {
 }
 
 .btn-user:hover {
-    background: #b71c1c;
+    background: #8b008b;
     color: #fff;
 }
 
@@ -157,13 +157,13 @@ select {
 
 .precio-actualizado {
     transform: scale(1.02);
-    border-color: rgba(255, 215, 0, 0.6);
+    border-color: rgba(255, 255, 255, 0.4);
     box-shadow: 
         0 6px 20px rgba(0, 0, 0, 0.4),
-        0 0 20px rgba(255, 215, 0, 0.3);
+        0 0 20px rgba(255, 255, 255, 0.2);
 }
 
 .precio-actualizado #total {
     transform: scale(1.05);
-    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9);
+    text-shadow: 0 4px 10px rgba(0, 0, 0, 0.9);
 }
