@@ -97,9 +97,20 @@ function setupRegistrationForm(registerForm) {
         
         showMessage('¡Cuenta creada exitosamente! Redirigiendo...', 'success');
         
-        // Redirect to home page
+        // Check if there's a redirect URL saved from purchase attempt
+        const redirectUrl = localStorage.getItem('redirectAfterLogin');
+        
+        // Redirect to appropriate page
         setTimeout(() => {
-            window.location.href = '../index.html';
+            if (redirectUrl) {
+                // Clear the redirect URL from storage
+                localStorage.removeItem('redirectAfterLogin');
+                // Redirect to the artist page that was originally requested
+                window.location.href = '../' + redirectUrl.split('/').slice(-2).join('/');
+            } else {
+                // Normal redirect to home page
+                window.location.href = '../index.html';
+            }
         }, 2000);
     });
 }
@@ -173,9 +184,20 @@ function setupLoginForm(loginForm) {
         
         showMessage('¡Sesión iniciada exitosamente! Redirigiendo...', 'success');
         
-        // Redirect to home page
+        // Check if there's a redirect URL saved from purchase attempt
+        const redirectUrl = localStorage.getItem('redirectAfterLogin');
+        
+        // Redirect to appropriate page
         setTimeout(() => {
-            window.location.href = '../index.html';
+            if (redirectUrl) {
+                // Clear the redirect URL from storage
+                localStorage.removeItem('redirectAfterLogin');
+                // Redirect to the artist page that was originally requested
+                window.location.href = '../' + redirectUrl.split('/').slice(-2).join('/');
+            } else {
+                // Normal redirect to home page
+                window.location.href = '../index.html';
+            }
         }, 2000);
     });
 }

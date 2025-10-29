@@ -507,7 +507,95 @@
             initializeUserInterface();
             initializeSticky();
             initializeSearchSync();
+            initializePurchaseProtection();
         });
+        
+        // ===== PURCHASE PROTECTION =====
+        function initializePurchaseProtection() {
+            // Interceptar clicks en enlaces de compra
+            document.addEventListener('click', function(e) {
+                const target = e.target;
+                
+                // Verificar si es un enlace de compra (COMPRAR o COMPRAR AHORA)
+                if (target.tagName === 'A' && (
+                    target.textContent.includes('COMPRAR AHORA') ||
+                    target.textContent.includes('COMPRAR')
+                )) {
+                    // Verificar si el usuario está logueado
+                    const user = getCurrentUser();
+                    
+                    if (!user) {
+                        // Usuario no logueado, interceptar el click
+                        e.preventDefault();
+                        
+                        // Obtener la URL de destino
+                        const targetUrl = target.href;
+                        
+                        // Guardar la URL de destino en localStorage para redirigir después del login
+                        localStorage.setItem('redirectAfterLogin', targetUrl);
+                        
+                        // Mostrar mensaje opcional
+                        showLoginRequiredMessage();
+                        
+                        // Redirigir a login después de un breve delay
+                        setTimeout(() => {
+                            window.location.href = 'auth/login.html';
+                        }, 1500);
+                    }
+                    // Si está logueado, permitir que el enlace funcione normalmente
+                }
+            });
+        }
+        
+        function showLoginRequiredMessage() {
+            // Crear mensaje temporal
+            const message = document.createElement('div');
+            message.innerHTML = `
+                <div style="
+                    position: fixed;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    background: linear-gradient(135deg, rgba(0, 46, 54, 0.95), rgba(0, 89, 95, 0.9));
+                    backdrop-filter: blur(15px);
+                    border: 2px solid rgba(0, 255, 255, 0.3);
+                    border-radius: 20px;
+                    padding: 30px 40px;
+                    text-align: center;
+                    color: white;
+                    font-family: 'Inter', sans-serif;
+                    font-size: 16px;
+                    font-weight: 500;
+                    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.5);
+                    z-index: 10000;
+                    min-width: 350px;
+                ">
+                    <div style="
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        gap: 15px;
+                        margin-bottom: 15px;
+                    ">
+                        <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: #00FFFF;">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+                        </svg>
+                        <h3 style="margin: 0; color: #00FFFF; font-size: 18px;">Inicia Sesión</h3>
+                    </div>
+                    <p style="margin: 0 0 10px 0;">Necesitas iniciar sesión para comprar entradas</p>
+                    <p style="margin: 0; font-size: 14px; opacity: 0.8;">Te redirigiremos en unos segundos...</p>
+                </div>
+            `;
+            
+            document.body.appendChild(message);
+            
+            // Remover mensaje después de 1.4 segundos
+            setTimeout(() => {
+                if (message.parentNode) {
+                    message.parentNode.removeChild(message);
+                }
+            }, 1400);
+        }
         
         // ===== USER INTERFACE INITIALIZATION =====
         function initializeUserInterface() {
