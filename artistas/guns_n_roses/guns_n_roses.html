@@ -8,30 +8,9 @@
     <title>Guns N' Roses - PlanetTickets</title>
 </head>
 <body>
-    <div class="header-nav">
-        <a href="../../index.html">
-            <img src="../../imagenes/icono.png" alt="volver al inicio">
-        </a>
-        <div class="user-actions" id="user-actions">
-            <div id="user-menu" style="display: none;">
-                <div class="user-avatar-container">
-                    <div class="user-avatar" id="user-avatar" onclick="toggleUserMenu()">
-                        <span id="user-initials"></span>
-                    </div>
-                    <div class="dropdown-menu" id="dropdown-menu">
-                        <div class="user-info">
-                            <span id="user-name" class="user-greeting"></span>
-                        </div>
-                        <button onclick="logout()" class="btn-logout">Cerrar Sesión</button>
-                    </div>
-                </div>
-            </div>
-            <div id="guest-menu" style="display: none;">
-                <a href="../../auth/login.html" class="btn-user">Iniciar Sesión</a>
-                <a href="../../auth/registro.html" class="btn-user">Crear Cuenta</a>
-            </div>
-        </div>
-    </div>
+    <header class="simple-header">
+        <a href="../../index.html" class="back-home">PlanetTickets</a>
+    </header>
     <section id="comprar">
             <h2>Compra tu Ticket</h2>
             <form>

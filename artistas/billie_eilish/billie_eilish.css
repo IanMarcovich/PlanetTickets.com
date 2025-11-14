@@ -1,3 +1,21 @@
+
+/* Ajuste para header fijo */
+body {
+    padding-top: 80px;
+}
+
+@media (max-width: 768px) {
+    body {
+        padding-top: 70px;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding-top: 65px;
+    }
+}
+
 body{
     background-color: rgba(4, 0, 255, 0.892);
     font-family: Montserrat ;
@@ -402,4 +420,106 @@ select {
 .btn-logout:hover {
     background: rgba(220, 53, 69, 1) !important;
     color: white !important;
+}
+
+
+
+/* ===== SIMPLE HEADER STYLES ===== */
+.simple-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    background: rgba(128, 128, 128, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    z-index: 1000;
+    padding: 1rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.back-home {
+    color: #00FFFF;
+    text-decoration: none;
+    font-size: 1.5rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    text-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+}
+
+.back-home:hover {
+    color: #FFFFFF;
+    text-shadow: 0 0 20px rgba(0, 255, 255, 0.8);
+    transform: scale(1.05);
+}
+
+/* Responsive adjustments for simple header */
+@media (max-width: 768px) {
+    .simple-header {
+        padding: 0.8rem 1rem;
+    }
+    
+    .back-home {
+        font-size: 1.3rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .simple-header {
+        padding: 0.6rem 1rem;
+    }
+    
+    .back-home {
+        font-size: 1.2rem;
+    }
+}
+/* Responsive adjustments for simple header */
+@media (max-width: 768px) {
+    .simple-header {
+        padding: 0.8rem 1rem;
+        text-align: center;
+    }
+    
+    .back-home {
+        font-size: 1.3rem;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .simple-header {
+        padding: 0.6rem 1rem;
+        text-align: center;
+    }
+    
+    .back-home {
+        font-size: 1.2rem;
+        text-align: center;
+    }
+}
+/* Responsive adjustments for simple header */
+@media (max-width: 768px) {
+    .simple-header {
+        padding: 0.8rem 1rem;
+    }
+    
+    .back-home {
+        font-size: 1.3rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .simple-header {
+        padding: 0.6rem 1rem;
+    }
+    
+    .back-home {
+        font-size: 1.2rem;
+    }
 }

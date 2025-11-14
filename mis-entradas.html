@@ -163,6 +163,44 @@
             padding-top: 15px;
             border-top: 1px solid rgba(0, 255, 255, 0.2);
             text-align: center;
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .download-pdf-btn {
+            background: linear-gradient(135deg, #00ffff, #0099cc);
+            color: #001a1a;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 15px rgba(0, 255, 255, 0.3);
+        }
+
+        .download-pdf-btn:hover {
+            background: linear-gradient(135deg, #33ffff, #00ccff);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 255, 255, 0.4);
+        }
+
+        .download-pdf-btn:active {
+            transform: translateY(0);
+        }
+
+        .download-pdf-btn svg {
+            transition: transform 0.3s ease;
+        }
+
+        .download-pdf-btn:hover svg {
+            transform: scale(1.1);
         }
 
         .return-ticket-btn {
@@ -283,12 +321,22 @@
                 gap: 5px;
             }
 
-            .return-ticket-btn {
+            .ticket-actions {
+                flex-direction: column;
+                gap: 8px;
+            }
+
+            .download-pdf-btn, .return-ticket-btn {
                 font-size: 0.8em;
                 padding: 8px 16px;
+                width: 100%;
+                max-width: 200px;
             }
         }
     </style>
+    
+    <!-- jsPDF Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head>
 <body>
     <!-- Header principal -->

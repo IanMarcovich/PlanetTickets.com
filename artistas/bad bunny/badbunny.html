@@ -8,42 +8,9 @@
     <title>BadBunny Entradas - PlanetTickets</title>
 </head>
 <body>
-    <div class="header-nav">
-        <a href="../../index.html">
-            <img src="../../imagenes/icono.png" alt="volver al inicio">
-        </a>
-        <div class="user-actions" id="user-actions">
-            <div id="user-menu" style="display: none;">
-                <div class="user-avatar-container">
-                    <div class="user-avatar" id="user-avatar" onclick="toggleUserMenu()">
-                        <span id="user-initials"></span>
-                    </div>
-                    <div class="dropdown-menu" id="dropdown-menu">
-                        <div class="dropdown-header">
-                            <span id="user-name" class="user-greeting"></span>
-                        </div>
-                        <div class="dropdown-divider"></div>
-                        <a href="../../mis-entradas.html" class="dropdown-item">
-                            <svg class="dropdown-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M9 12L11 14L15 10M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                            Ver mis Entradas
-                        </a>
-                        <button onclick="logout()" class="dropdown-item dropdown-logout">
-                            <svg class="dropdown-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M9 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V5C3 4.46957 3.21071 3.96086 3.58579 3.58579C3.96086 3.21071 4.46957 3 5 3H9M16 17L21 12M21 12L16 7M21 12H9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                            Cerrar Sesión
-                        </button>
-                    </div>
-                </div>
-            </div>
-            <div id="guest-menu" style="display: none;">
-                <a href="../../auth/login.html" class="btn-user">Iniciar Sesión</a>
-                <a href="../../auth/registro.html" class="btn-user">Crear Cuenta</a>
-            </div>
-        </div>
-    </div>
+    <header class="simple-header">
+        <a href="../../index.html" class="back-home">PlanetTickets</a>
+    </header>
     <section id="comprar">
             <h2>Compra tu Ticket</h2>
             <form>

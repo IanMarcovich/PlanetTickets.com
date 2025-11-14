@@ -207,6 +207,12 @@ function displayMyTickets() {
                             <strong>${ticketManager.formatPrice(ticket.totalPrice)}</strong>
                         </div>
                         <div class="ticket-actions">
+                            <button class="download-pdf-btn" onclick="downloadTicketPDF('${ticket.id}', '${ticket.artistName}', '${ticket.quantity}', '${ticket.location}', '${ticket.unitPrice}', '${ticket.totalPrice}', '${ticket.purchaseDate}')">
+                                <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"/>
+                                </svg>
+                                Descargar PDF
+                            </button>
                             <button class="return-ticket-btn" onclick="returnTicket('${ticket.id}', '${ticket.artistName}', ${ticket.quantity})">
                                 <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
                                     <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zM17 13H7v-2h10v2z"/>
@@ -255,6 +261,94 @@ function returnTicket(ticketId, artistName, quantity) {
             alert('Error al devolver la entrada. Por favor intenta de nuevo.');
         }
     }
+}
+
+// Función para descargar entrada como PDF
+function downloadTicketPDF(ticketId, artistName, quantity, location, unitPrice, totalPrice, purchaseDate) {
+    // Verificar si jsPDF está disponible
+    if (typeof window.jspdf === 'undefined') {
+        alert('Error: Biblioteca PDF no disponible. Recargue la página.');
+        return;
+    }
+
+    const { jsPDF } = window.jspdf;
+    const pdf = new jsPDF();
+
+    // Configurar fondo azul de toda la página
+    pdf.setFillColor(0, 46, 50); // RGB del fondo de la página
+    pdf.rect(0, 0, 210, 297, 'F'); // A4 dimensions in mm
+
+    // Header con título principal
+    pdf.setFontSize(28);
+    pdf.setTextColor(0, 255, 255); // Color cian del logo
+    pdf.text('PlanetTickets', 105, 35, { align: 'center' });
+
+    // Subtítulo
+    pdf.setFontSize(16);
+    pdf.setTextColor(255, 255, 255);
+    pdf.text('ENTRADA DIGITAL', 105, 50, { align: 'center' });
+
+    // Línea separadora cian brillante
+    pdf.setDrawColor(0, 255, 255);
+    pdf.setLineWidth(1);
+    pdf.line(30, 60, 180, 60);
+
+    // Información del evento con fondo semitransparente
+    pdf.setFillColor(0, 89, 95); // Color más claro para la sección de información
+    pdf.roundedRect(25, 70, 160, 90, 8, 8, 'F');
+
+    // Título de la sección
+    pdf.setFontSize(14);
+    pdf.setTextColor(0, 255, 255);
+    pdf.text('DETALLES DEL EVENTO', 105, 85, { align: 'center' });
+
+    // Información del evento
+    pdf.setFontSize(12);
+    pdf.setTextColor(255, 255, 255);
+    pdf.text(`Artista: ${artistName}`, 35, 100);
+    pdf.text(`Ubicación: ${location}`, 35, 110);
+    pdf.text(`Cantidad: ${quantity} entrada(s)`, 35, 120);
+    pdf.text(`Precio unitario: $${unitPrice}`, 35, 130);
+    pdf.text(`Precio total: $${totalPrice}`, 35, 140);
+    pdf.text(`Fecha de compra: ${purchaseDate}`, 35, 150);
+
+    // Código de entrada con fondo destacado
+    pdf.setFillColor(0, 255, 255);
+    pdf.roundedRect(25, 170, 160, 20, 5, 5, 'F');
+    pdf.setTextColor(0, 46, 50);
+    pdf.setFontSize(11);
+    pdf.text(`Código de entrada: ${ticketId}`, 105, 182, { align: 'center' });
+
+    // QR Code placeholder con mejor diseño
+    pdf.setFillColor(255, 255, 255);
+    pdf.roundedRect(30, 200, 50, 50, 5, 5, 'F');
+    pdf.setTextColor(0, 46, 50);
+    pdf.setFontSize(10);
+    pdf.text('QR CODE', 55, 230, { align: 'center' });
+
+    // Información adicional al lado del QR
+    pdf.setTextColor(255, 255, 255);
+    pdf.setFontSize(10);
+    pdf.text('Presente este código al', 90, 215);
+    pdf.text('ingresar al evento junto', 90, 225);
+    pdf.text('con su documento de identidad', 90, 235);
+
+    // Términos y condiciones con fondo
+    pdf.setFillColor(0, 30, 35);
+    pdf.roundedRect(25, 260, 160, 25, 5, 5, 'F');
+    pdf.setTextColor(255, 255, 255);
+    pdf.setFontSize(9);
+    pdf.text('• Esta entrada es válida solo para el evento especificado', 30, 270);
+    pdf.text('• No reembolsable después de 24 horas antes del evento', 30, 277);
+    pdf.text('• Debe presentarse junto con documento de identidad válido', 30, 284);
+
+    // Footer
+    pdf.setTextColor(0, 255, 255);
+    pdf.setFontSize(8);
+    pdf.text('www.planettickets.com', 105, 292, { align: 'center' });
+
+    // Descargar el PDF
+    pdf.save(`entrada-${artistName.replace(/\s+/g, '-')}-${ticketId}.pdf`);
 }
 
 // Función para mostrar mensaje de devolución exitosa
