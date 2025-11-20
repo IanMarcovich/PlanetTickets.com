@@ -289,16 +289,6 @@ h1 {
 }
 
 h1 a {
-        outline: none !important;
-        box-shadow: none !important;
-    }
-    h1 a:focus, h1 a:active {
-        outline: none !important;
-        box-shadow: none !important;
-    }
-    .header-logo:focus, .header-logo:active {
-        outline: none !important;
-        box-shadow: none !important;
     color: inherit;
     text-decoration: none;
     display: block;
