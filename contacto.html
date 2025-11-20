@@ -432,7 +432,8 @@
                 </div>
                 
                 <div class="contact-form">
-                    <form class="contact-form-content" id="contactForm">
+                    <form class="contact-form-content" id="contactForm" action="https://formspree.io/f/xyznldra" method="POST">
+                                                <div id="contact-success" style="display:none; background:rgba(0,255,255,0.12); border-radius:12px; padding:18px; margin-bottom:18px; text-align:center; color:#00ffff; font-weight:600; font-size:1.1em;">¡Mensaje enviado correctamente! Te responderemos pronto.</div>
                         <div class="form-group">
                             <input type="text" name="name" placeholder="Tu nombre" required>
                         </div>
@@ -454,6 +455,20 @@
                             <textarea name="message" placeholder="Tu mensaje" rows="5" required></textarea>
                         </div>
                         <button type="submit" class="contact-btn">Enviar Mensaje</button>
+                                            <script>
+                                            document.addEventListener('DOMContentLoaded', function() {
+                                                var form = document.getElementById('contactForm');
+                                                var successMsg = document.getElementById('contact-success');
+                                                if(form) {
+                                                    form.addEventListener('submit', function() {
+                                                        setTimeout(function() {
+                                                            successMsg.style.display = 'block';
+                                                            form.reset();
+                                                        }, 500);
+                                                    });
+                                                }
+                                            });
+                                            </script>
                     </form>
                 </div>
             </div>
@@ -468,24 +483,6 @@
     <!-- Scripts -->
     <script>
         // Manejo del formulario de contacto
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Obtener datos del formulario
-            const formData = new FormData(this);
-            const data = {
-                name: formData.get('name'),
-                email: formData.get('email'),
-                subject: formData.get('subject'),
-                message: formData.get('message')
-            };
-            
-            // Mostrar mensaje de confirmación
-            showSuccessMessage();
-            
-            // Limpiar formulario
-            this.reset();
-        });
 
         function showSuccessMessage() {
             // Crear overlay
