@@ -50,7 +50,7 @@
             <!-- Logo Section -->
             <div class="sticky-logo">
                 <img src="imagenes/icono.png" alt="PlanetTickets Logo" class="sticky-logo-img">
-                <span class="sticky-title">PlanetTickets</span>
+                <span class="sticky-title" id="stickyLogoScroll" style="cursor:pointer;">PlanetTickets</span>
             </div>
             
             <!-- Search Section -->
@@ -140,19 +140,6 @@
                     </div>
                 </div>
                 
-                <!-- Slide 2: Bad Bunny -->
-                <div class="carousel-slide">
-                    <div class="slide-content">
-                        <div class="slide-image bad-bunny-bg"></div>
-                        <div class="slide-info">
-                            <h3>BAD BUNNY</h3>
-                            <h4>DeBÍ TiRAR MáS FOToS</h4>
-                            <p>13-15 Febrero 2026 • River Plate</p>
-                            <a href="./artistas/bad bunny/badbunny.html" class="btn-destacado">COMPRAR AHORA</a>
-                        </div>
-                    </div>
-                </div>
-                
                 <!-- Slide 3: Coldplay -->
                 <div class="carousel-slide">
                     <div class="slide-content">
@@ -236,7 +223,7 @@
     <section class="upcoming-shows-section">
         <h2>PRÓXIMOS SHOWS</h2>
         <main>
-            <div class="contendor">
+            <div class="contendor grid-shows">
                 <!-- Duki Show -->
                 <section id="shows">
                     <article class="duki">
@@ -248,22 +235,6 @@
                                 <p>Lugar: Movistar Arena</p>
                                 <p>Ameri es el cuarto álbum de estudio del rapero y compositor argentino Duki, lanzado mundialmente el 31 de octubre de 2024 a través de Dale Play Records y SSJ Records. El álbum rompió varios récords de ventas y streaming, a nivel regional y mundial</p>
                                 <li><a href="./artistas/duki/duki.html" target="noopener">COMPRAR</a></li>
-                            </div>
-                        </details> 
-                    </article>
-                </section>
-                
-                <!-- Bad Bunny Show -->
-                <section id="shows">
-                    <article class="BAD_BUNNY">
-                        <details>
-                            <summary></summary>
-                            <div class="informacion_show">
-                                <h4>BAD BUNNY | DeBÍ TiRAR MáS FOToS</h4>
-                                <p>Fechas: 13 de Febrero - 14 de Febrero - 15 de Febrero de 2026</p>
-                                <p>Lugar: River Plate</p>
-                                <p>Debi tirar mas fotos es el séxto álbum de estudio grabado por el cantante puertorriqueño Bad Bunny. Se lanzó el 5 de enero de 2025 a través de la compañía discográfica Rimas Entertainment precediendo el lanzamiento de su anterior álbum Nadie sabe lo que va a pasar mañana (2023). Contiene colaboraciones con Chuwi, Dei V, Pleneros de la Cresta, Omar Courtz y RaiNao. Además, es el álbum con el que el cantante explora la animación de stop motion.</p>
-                                <li><a href="./artistas/bad bunny/badbunny.html" target="_blank">COMPRAR</a></li>
                             </div>
                         </details> 
                     </article>
@@ -300,27 +271,6 @@
                         </details> 
                     </article>
                 </section>
-                
-                <!-- Guns N' Roses Show -->
-                <section id="shows">
-                    <article class="guns_n_roses">
-                        <details>
-                            <summary></summary>
-                            <div class="informacion_show">
-                                <h4>GUNS N' ROSES</h4>
-                                <p>Fechas: 17 de OCTUBRE - 18 de OCTUBRE de 2026</p>
-                                <p>Lugar: Estadio TOMÁS A DUCÓ (C.A HURACAN)</p>
-                                <p>Guns N' Roses está en Argentina para su gira 2025 que es parte de la etapa sudamericana de su tour mundial "Because What You Want & What You Get Are Two Completely Different Things". La banda anunció una nueva ronda de conciertos en Latinoamérica tras el éxito de su gira por Europa y Asia. Las fechas confirmadas son el 17 y 18 de octubre de 2025 en el Estadio Tomás A. Ducó (Estadio de Huracán).</p>
-                                <li><a href="artistas/guns_n_roses/guns_n_roses.html" target="_blank">COMPRAR</a></li>
-                            </div>
-                        </details> 
-                    </article>
-                </section>
-                
-                <!-- Ver más Button -->
-                <div class="ver-mas-container">
-                    <button class="btn-ver-mas" onclick="mostrarMasArtistas()">Ver más artistas</button>
-                </div>
                 
                 <!-- Coldplay Show -->
                 <section id="shows">
@@ -449,23 +399,7 @@
                         </details> 
                     </article>
                 </section>
-                
-                <!-- Dua Lipa Show -->
-                <section id="shows">
-                    <article class="dua_lipa">
-                        <details>
-                            <summary></summary>
-                            <div class="informacion_show">
-                                <h4>DUA LIPA | RADICAL OPTIMISM TOUR</h4>
-                                <p>Fechas: 12 de Diciembre de 2027</p>
-                                <p>Lugar: River Plate</p>
-                                <p>Dua Lipa presenta su tour "Radical Optimism" en Buenos Aires. La estrella británica del pop trae todos sus hits como "Levitating", "Don't Start Now", "Physical" y "New Rules" en un show lleno de color, energía y las mejores coreografías. Una noche perfecta para bailar y cantar sin parar.</p>
-                                <li><a href="./artistas/dua_lipa/dua_lipa.html" target="_blank">COMPRAR</a></li>
-                            </div>
-                        </details> 
-                    </article>
-                </section>
-                
+
                 <!-- Harry Styles Show -->
                 <section id="shows">
                     <article class="harry_styles">
@@ -477,22 +411,6 @@
                                 <p>Lugar: Estadio River Plate</p>
                                 <p>Harry Styles llega por primera vez como solista a Argentina con "Love On Tour". El ex One Direction presenta su música indie-pop con canciones como "As It Was", "Watermelon Sugar", "Adore You" y "Sign of the Times". Un show colorido, inclusivo y lleno de buena energía que promete ser histórico.</p>
                                 <li><a href="./artistas/harry_styles/harry_styles.html" target="_blank">COMPRAR</a></li>
-                            </div>
-                        </details> 
-                    </article>
-                </section>
-                
-                <!-- Rosalía Show -->
-                <section id="shows">
-                    <article class="rosalia">
-                        <details>
-                            <summary></summary>
-                            <div class="informacion_show">
-                                <h4>ROSALÍA | MOTOMAMI WORLD TOUR</h4>
-                                <p>Fechas: 25 de Febrero de 2028</p>
-                                <p>Lugar: Personal Fest - Tecnópolis</p>
-                                <p>Rosalía trae su revolucionario "Motomami World Tour" a Buenos Aires. La artista catalana presenta su fusión única de flamenco, reggaetón y pop experimental con éxitos como "Despechá", "La Fama", "Con Altura" y "Malamente". Una experiencia artística única que redefine la música contemporánea.</p>
-                                <li><a href="./artistas/rosalia/rosalia.html" target="_blank">COMPRAR</a></li>
                             </div>
                         </details> 
                     </article>
@@ -939,5 +857,15 @@
         });
     </script>
     <script src="search.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        var stickyLogo = document.getElementById('stickyLogoScroll');
+        if (stickyLogo) {
+          stickyLogo.addEventListener('click', function(e) {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          });
+        }
+      });
+    </script>
 </body>
 </html>

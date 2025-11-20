@@ -106,7 +106,7 @@ function setupRegistrationForm(registerForm) {
                 // Clear the redirect URL from storage
                 localStorage.removeItem('redirectAfterLogin');
                 // Redirect to the artist page that was originally requested
-                window.location.href = '../' + redirectUrl.split('/').slice(-2).join('/');
+                window.location.href = redirectUrl;
             } else {
                 // Normal redirect to home page
                 window.location.href = '../index.html';
@@ -193,7 +193,7 @@ function setupLoginForm(loginForm) {
                 // Clear the redirect URL from storage
                 localStorage.removeItem('redirectAfterLogin');
                 // Redirect to the artist page that was originally requested
-                window.location.href = '../' + redirectUrl.split('/').slice(-2).join('/');
+                window.location.href = redirectUrl;
             } else {
                 // Normal redirect to home page
                 window.location.href = '../index.html';

@@ -19,6 +19,13 @@
                 <input type="text" id="apellido" name="apellido" required>
                 <label for="email">Correo electrónico:</label>
                 <input type="email" id="email" name="email" required>
+                <label for="fecha">Elegí la fecha del show:</label>
+                <select id="fecha" name="fecha" required>
+                    <option value="" disabled selected>Selecciona una fecha</option>
+                    <option value="2027-10-22">22 de Octubre de 2027</option>
+                    <option value="2027-10-23">23 de Octubre de 2027</option>
+                </select>
+
                 <label for="cantidad">Cantidad de tickets:</label>
                 <select name="Cantidad de tickets" id="entradas" required>
                     <option value="" disabled selected>Selecciona una opción</option>
@@ -39,6 +46,9 @@
                     <option value="platea_alta">Platea Alta: 38.000$</option>
                 </select>
                 
+                <div class="precio-total">
+                    <h3>Precio Total: <span id="total">$0</span></h3>
+                </div>
                 <button type="submit">Comprar</button>
 
                 <div class="spotify-box">
