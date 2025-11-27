@@ -11,10 +11,10 @@ class TicketManager {
             id: Date.now() + Math.random(),
             artistName: ticketData.artistName,
             artistImage: ticketData.artistImage,
-            quantity: parseInt(ticketData.quantity),
+            quantity: parseInt(ticketData.quantity) || 0,
             location: ticketData.location,
-            unitPrice: parseInt(ticketData.unitPrice),
-            totalPrice: parseInt(ticketData.quantity) * parseInt(ticketData.unitPrice),
+            unitPrice: parseInt(ticketData.unitPrice) || 0,
+            totalPrice: (parseInt(ticketData.quantity) || 0) * (parseInt(ticketData.unitPrice) || 0),
             purchaseDate: new Date().toISOString(),
             userName: ticketData.userName
         };
@@ -427,32 +427,4 @@ function closeReturnMessage() {
     if (overlay) {
         overlay.remove();
     }
-}
-
-// Función temporal para agregar entrada de prueba (solo para debug)
-function addTestTicket() {
-    const currentUser = getCurrentUser();
-    if (!currentUser) {
-        alert('Debes iniciar sesión primero');
-        return;
-    }
-    
-    const testTicket = {
-        artistName: 'Taylor Swift',
-        artistImage: '../../imagenes/taylor.webp',
-        quantity: 2,
-        location: 'Campo VIP: $150.000',
-        unitPrice: 150000,
-        userName: currentUser.name
-    };
-    
-    ticketManager.saveTicket(testTicket);
-    displayMyTickets();
-    console.log('Entrada de prueba agregada');
-}
-
-// Agregar botón de debug temporal (solo para testing)
-if (window.location.search.includes('debug=true')) {
-    window.addTestTicket = addTestTicket;
-    console.log('Modo debug activado. Usa addTestTicket() para agregar entrada de prueba');
 }

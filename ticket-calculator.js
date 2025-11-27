@@ -8,20 +8,44 @@ document.addEventListener('DOMContentLoaded', function() {
     const lugarSelect = document.getElementById('lugar');
     const totalSpan = document.getElementById('total');
     
+    function extractPriceFromSelect(selectEl) {
+        if (!selectEl) return 0;
+        const raw = selectEl.value || '';
+        // Try to parse numeric value from value attribute
+        let digits = raw.toString().replace(/[^0-9]/g, '');
+        if (digits) {
+            return parseInt(digits, 10);
+        }
+
+        // Fallback: parse from option text (e.g., "Campo: 32.000$")
+        const text = selectEl.options[selectEl.selectedIndex]?.text || '';
+        const match = text.match(/[0-9][0-9\.,]*/g);
+        if (match && match.length > 0) {
+            // take the first match, remove dots and commas used as thousands
+            const num = match[0].replace(/[.,]/g, '');
+            const parsed = parseInt(num, 10);
+            return isNaN(parsed) ? 0 : parsed;
+        }
+
+        return 0;
+    }
+
     function calcularPrecioTotal() {
         const cantidad = parseInt(entradasSelect.value) || 0;
-        const precioUnitario = parseInt(lugarSelect.value) || 0;
-        
-        if (cantidad > 0 && precioUnitario > 0) {
-            const total = cantidad * precioUnitario;
-            totalSpan.textContent = formatPrice(total);
-            
-            totalSpan.parentElement.classList.add('precio-actualizado');
-            setTimeout(() => {
-                totalSpan.parentElement.classList.remove('precio-actualizado');
-            }, 600);
-        } else {
-            totalSpan.textContent = '$0';
+        const precioUnitario = extractPriceFromSelect(lugarSelect) || 0;
+
+        if (totalSpan) {
+            if (cantidad > 0 && precioUnitario > 0) {
+                const total = cantidad * precioUnitario;
+                totalSpan.textContent = formatPrice(total);
+
+                totalSpan.parentElement.classList.add('precio-actualizado');
+                setTimeout(() => {
+                    totalSpan.parentElement.classList.remove('precio-actualizado');
+                }, 600);
+            } else {
+                totalSpan.textContent = '$0';
+            }
         }
     }
     
@@ -42,7 +66,14 @@ document.addEventListener('DOMContentLoaded', function() {
             const currentUser = getCurrentUser();
             console.log('Current user:', currentUser);
             if (!currentUser) {
-                alert('Debes iniciar sesión para comprar entradas.');
+                // Guardar la página actual para redirigir después del login
+                try {
+                    localStorage.setItem('redirectAfterLogin', window.location.href);
+                } catch (err) {
+                    console.warn('No se pudo guardar redirectAfterLogin', err);
+                }
+
+                alert('Debes iniciar sesión para comprar entradas. Serás redirigido al login.');
                 window.location.href = '../../auth/login.html';
                 return false;
             }
@@ -58,7 +89,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 return false;
             }
             
-            const precioUnitario = parseInt(lugarValue);
+            const precioUnitario = extractPriceFromSelect(lugarSelect);
             const total = cantidad * precioUnitario;
             const confirmacion = confirm(
                 `¿Confirmas la compra de ${cantidad} ticket${cantidad > 1 ? 's' : ''} por un total de ${formatPrice(total)}?`
@@ -71,27 +102,27 @@ document.addEventListener('DOMContentLoaded', function() {
                 const artistName = document.title.split(' - ')[0] || document.querySelector('h1')?.textContent || 'Artista';
                 
                 // Determinar imagen basada en el nombre del artista
-                let artistImage = '../../imagenes/default-artist.jpg'; // imagen por defecto
+                let artistImage = '/imagenes/default-artist.jpg'; // imagen por defecto
                 if (artistName.toLowerCase().includes('taylor')) {
-                    artistImage = '../../imagenes/taylor.webp';
+                    artistImage = '/imagenes/taylor.webp';
                 } else if (artistName.toLowerCase().includes('bad bunny')) {
-                    artistImage = '../../imagenes/bad bunny.jpg';
+                    artistImage = '/imagenes/bad_bunny.jpg';
                 } else if (artistName.toLowerCase().includes('duki')) {
-                    artistImage = '../../imagenes/duki.png';
+                    artistImage = '/imagenes/duki.jpg';
                 } else if (artistName.toLowerCase().includes('coldplay')) {
-                    artistImage = '../../imagenes/coldplay.png';
+                    artistImage = '/imagenes/coldplay.jpg';
                 } else if (artistName.toLowerCase().includes('weeknd')) {
-                    artistImage = '../../imagenes/theweeknd.png';
+                    artistImage = '/imagenes/theweeknd.jpg';
                 } else if (artistName.toLowerCase().includes('billie')) {
-                    artistImage = '../../imagenes/billie.png';
+                    artistImage = '/imagenes/billie.png';
                 } else if (artistName.toLowerCase().includes('imagine dragons')) {
-                    artistImage = '../../imagenes/imagine_dragons.png';
+                    artistImage = '/imagenes/imagine_dragons.jpg';
                 } else if (artistName.toLowerCase().includes('alejandro')) {
-                    artistImage = '../../imagenes/alejandro_sanz.jpg';
+                    artistImage = './imagenes/alejandro_sanz.jpg';
                 } else if (artistName.toLowerCase().includes('guns')) {
-                    artistImage = '../../imagenes/Guns-and-Roses-Argentina.jpg';
+                    artistImage = '/imagenes/Guns-and-Roses-Argentina.jpg';
                 } else if (artistName.toLowerCase().includes('lollapalooza')) {
-                    artistImage = '../../imagenes/lolla.jpg';
+                    artistImage = '/imagenes/lolla.jpg';
                 }
                 
                 console.log('Datos del artista:', { artistName, artistImage });

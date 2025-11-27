@@ -304,7 +304,6 @@ h1 a {
     height: 45px;
     border-radius: 50%;
     object-fit: cover;
-    /* Se elimina el filtro para evitar difuminado */
     transition: all 0.3s ease;
 }
 
@@ -888,12 +887,12 @@ h2::after {
 
 .coldplay-bg {
     background-image: linear-gradient(135deg, rgba(33, 150, 243, 0.5), rgba(3, 169, 244, 0.3)), 
-                      url('./imagenes/coldplay.png');
+                      url('./imagenes/coldplay.jpg');
 }
 
 .duki-bg {
     background-image: linear-gradient(135deg, rgba(139, 0, 0, 0.5), rgba(255, 0, 0, 0.3)), 
-                      url('./imagenes/duki.png');
+                      url('./imagenes/duki.jpg');
 }
 
 .billie-eilish-bg {
@@ -903,7 +902,7 @@ h2::after {
 
 .the-weeknd-bg {
     background-image: linear-gradient(135deg, rgba(75, 0, 130, 0.5), rgba(138, 43, 226, 0.3)), 
-                      url('./imagenes/theweeknd.png');
+                      url('./imagenes/theweeknd.jpg');
 }
 
 .ariana-grande-bg {
@@ -1386,30 +1385,11 @@ p {
     font-family: 'Inter', sans-serif;
     font-weight: 500;
     text-decoration: none;
-    transition: all 0.3s ease;
     border: 1px solid rgba(0, 255, 255, 0.3);
     font-size: 13px;
     cursor: pointer;
     position: relative;
     overflow: hidden;
-}
-
-.sticky-btn:hover {
-    background: rgba(0, 255, 255, 0.25);
-    border-color: rgba(0, 255, 255, 0.5);
-    transform: translateY(-1px);
-    box-shadow: 0 4px 15px rgba(0, 255, 255, 0.2);
-}
-
-.sticky-btn::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-    transition: left 0.5s;
 }
 
 .sticky-btn:hover::before {
@@ -1856,7 +1836,7 @@ section {
 
 .BAD_BUNNY {
     background-image: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(255, 140, 0, 0.1)), 
-                      url("imagenes/bad\ bunny.jpg");
+                      url("imagenes/bad_bunny.jpg");
     border-image: linear-gradient(45deg, #ffd700, #ff8c00, #ffd700) 1;
 }
 
@@ -1884,7 +1864,7 @@ section {
 
 .coldplay {
     background-image: linear-gradient(135deg, rgba(255, 255, 0, 0.1), rgba(255, 215, 0, 0.1)), 
-                      url("imagenes/coldplay.png");
+                      url("imagenes/coldplay.jpg");
     border-image: linear-gradient(45deg, #ffff00, #ffd700, #ffff00) 1;
     width: auto;
     height: auto;
@@ -1900,7 +1880,7 @@ section {
 
 .the_weeknd {
     background-image: linear-gradient(135deg, rgba(139, 0, 139, 0.1), rgba(75, 0, 130, 0.1)), 
-                      url("imagenes/theweeknd.png");
+                      url("imagenes/theweeknd.jpg");
     border-image: linear-gradient(45deg, #8b008b, #4b0082, #8b008b) 1;
     width: auto;
     height: auto;
@@ -1916,7 +1896,7 @@ section {
 
 .imagine_dragons {
     background-image: linear-gradient(135deg, rgba(255, 69, 0, 0.1), rgba(255, 140, 0, 0.1)), 
-                      url("imagenes/imagine_dragons.png");
+                      url("imagenes/imagine_dragons.jpg");
     border-image: linear-gradient(45deg, #ff4500, #ff8c00, #ff4500) 1;
     width: auto;
     height: auto;

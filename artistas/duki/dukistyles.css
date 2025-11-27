@@ -32,7 +32,7 @@ form {
     gap: 15px;
     max-width: 400px;
     margin: auto;
-    background-image: url('duki.png');
+    background-image: url('../../imagenes/duki.jpg');
     background-size: cover;
     background-position: center;
     border-radius: 15px;
