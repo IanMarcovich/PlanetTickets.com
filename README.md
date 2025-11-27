@@ -20,5 +20,5 @@ PlanetTickets es una plataforma web diseñada para facilitar la compra de entrad
 
 Frontend: HTML5, CSS3, JavaScript
 
-Backend / Servicios: Firebase Auth, Firebase Firestore (opcional), Formspree para envío de formularios
+Backend / Servicios: Formspree para envío de formularios
 
